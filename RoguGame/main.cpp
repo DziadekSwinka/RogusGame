@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
@@ -52,7 +53,12 @@ private:
     sf::Texture txt;
     sf::Sprite sprite;
     sf::Clock clock;
+    sf::Font GochiHand_Regular;
+    sf::Text pickUp;
+    sf::Vector2f Center;
+    bool showText;
     int i;
+    friend class item;
 public:
     character(sf::RenderWindow &window1,std::string path):window(window1)
     {
@@ -60,11 +66,18 @@ public:
         sprite.setTexture(txt);
         sprite.setScale(0.6,0.6);
         sprite.setOrigin(400,700);
+        GochiHand_Regular.loadFromFile("Fonts\\GochiHand-Regular.ttf");
+        pickUp.setFont(GochiHand_Regular);
+        pickUp.setString("Podnies [E]");
+        pickUp.setColor(sf::Color::Magenta);
+        pickUp.setCharacterSize(110);
         i=0;
     };
     void Update(sf::Vector2f veCam)
     {
-        sprite.setPosition(veCam);
+        Center=veCam;
+        sprite.setPosition(Center);
+        pickUp.setPosition(Center.x-220,Center.y-600);
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
@@ -89,6 +102,8 @@ public:
             sprite.setTextureRect(sf::IntRect(2400,0,800,1400));
         }
         window.draw(sprite);
+        if(showText)
+            window.draw(pickUp);
     }
 };
 class item
@@ -108,8 +123,11 @@ public:
         pos.x=(rand()%34700)+2500;
         pos.y=(rand()%34700)+2500;
     }
-    void Update()
+    void Update(character &P)
     {
+        if(P.Center.x+pos.x<200 /*&& P.Center.x-pos.x<0 */&& P.Center.y+pos.y<200 /*&& P.Center.y-pos.y<0*/)
+            P.showText=true;
+        else P.showText=false;
         sprite.setPosition(pos.x,pos.y);
         window.draw(sprite);
     }
@@ -119,8 +137,13 @@ int main()
     Config.DIM.x=1920;
     Config.DIM.y=1080;
     float BoostSpeed;
-
+    sf::Sprite Title;
+    sf::Texture TitleTxt;
+    TitleTxt.loadFromFile("Textures//Title.jpg");
+    Title.setTexture(TitleTxt);
     sf::RenderWindow window(sf::VideoMode(Config.DIM.x,Config.DIM.y),"RogusGame");
+    window.draw(Title);
+    window.display();
     std::vector<item*>(stone);
     std::vector<item*>(stick);
     std::vector<item*>(f1);
@@ -166,13 +189,13 @@ int main()
         window.clear(sf::Color(30,100,30));
         Background.Update();
         for(int i=0;i<stone.size();i++)
-            stone[i]->Update();
+            stone[i]->Update(Pawel);
         for(int i=0;i<stick.size();i++)
-            stick[i]->Update();
+            stick[i]->Update(Pawel);
         for(int i=0;i<f1.size();i++)
-            f1[i]->Update();
+            f1[i]->Update(Pawel);
         for(int i=0;i<f2.size();i++)
-            f2[i]->Update();
+            f2[i]->Update(Pawel);
 
         Pawel.Update(Camera.getCenter());
         window.display();
