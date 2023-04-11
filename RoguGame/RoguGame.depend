@@ -1,8 +1,10 @@
 # depslib dependency file v1.0
-1680297354 source:c:\users\pc\documents\github\rogusgame\rogugame\main.cpp
+1681231059 source:c:\users\pc\documents\github\rogusgame\rogugame\main.cpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	<cmath>
+	<cstdlib>
+	<vector>
 
 1660370567 d:\biblioteki c++\sfml-2.5.1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>

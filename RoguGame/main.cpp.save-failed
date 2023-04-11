@@ -104,16 +104,25 @@ public:
     {
         txt.loadFromFile(path);
         sprite.setTexture(txt);
-        sprite.setScale(0.2f,0.2f);
         pos.x=(rand()%34700)+2500;
         pos.y=(rand()%34700)+2500;
     }
     void Update()
     {
-        sprite.setPosition(pos.x,pos.y);
         window.draw(sprite);
     }
 };
+/*template <typename T>class equipment
+{
+private:
+public:
+
+}*/
+void item_ini(std::vector<item*>(thisItem),int j,sf::RenderWindow &window,std::string path)
+{
+    for(int i=0;i<j;i++)
+        thisItem.push_back(new item(window,path));
+}
 int main()
 {
     Config.DIM.x=1920;
@@ -122,20 +131,7 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(Config.DIM.x,Config.DIM.y),"RogusGame");
     std::vector<item*>(stone);
-    std::vector<item*>(stick);
-    std::vector<item*>(f1);
-    std::vector<item*>(f2);
-    for(int i=0;i<60;i++)
-        stone.push_back(new item(window,"Textures//stone.png"));
-    for(int i=0;i<45;i++)
-        stick.push_back(new item(window,"Textures//stick.png"));
-    for(int i=0;i<30;i++)
-    {
-        f1.push_back(new item(window,"Textures//flower1.png"));
-        f2.push_back(new item(window,"Textures//flower2.png"));
-    }
-
-
+    item_ini(stone,30,window,"stone.png");
     sf::View Camera;
     Camera.zoom(5.f);
     Camera.setCenter(18600,18600);
@@ -167,13 +163,6 @@ int main()
         Background.Update();
         for(int i=0;i<stone.size();i++)
             stone[i]->Update();
-        for(int i=0;i<stick.size();i++)
-            stick[i]->Update();
-        for(int i=0;i<f1.size();i++)
-            f1[i]->Update();
-        for(int i=0;i<f2.size();i++)
-            f2[i]->Update();
-
         Pawel.Update(Camera.getCenter());
         window.display();
     }
