@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1681236273 source:c:\users\pc\documents\github\rogusgame\rogugame\main.cpp
+1681309158 source:c:\users\pc\documents\github\rogusgame\rogugame\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<iostream>

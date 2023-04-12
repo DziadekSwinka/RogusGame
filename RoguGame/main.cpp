@@ -18,6 +18,7 @@ struct
         return ret;
     }
     sf::Vector2i DIM;
+    float zoom=5.f;
 
 }Config;
 
@@ -104,6 +105,7 @@ public:
         window.draw(sprite);
         if(showText)
             window.draw(pickUp);
+        showText=false;
     }
 };
 class item
@@ -120,16 +122,23 @@ public:
         txt.loadFromFile(path);
         sprite.setTexture(txt);
         sprite.setScale(0.2f,0.2f);
+        sprite.setOrigin((txt.getSize().x/2),(txt.getSize().y/2));
         pos.x=(rand()%34700)+2500;
         pos.y=(rand()%34700)+2500;
     }
-    void Update(character &P)
+    bool Update(character &P)
     {
-        if(P.Center.x+pos.x<200 /*&& P.Center.x-pos.x<0 */&& P.Center.y+pos.y<200 /*&& P.Center.y-pos.y<0*/)
+        if(abs(P.Center.x-pos.x)<250&& abs(P.Center.y-pos.y)<250)
+        {
             P.showText=true;
-        else P.showText=false;
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+            {
+                return true;
+            }
+        }
         sprite.setPosition(pos.x,pos.y);
         window.draw(sprite);
+        return false;
     }
 };
 int main()
@@ -160,7 +169,7 @@ int main()
 
 
     sf::View Camera;
-    Camera.zoom(5.f);
+    Camera.zoom(Config.zoom);
     Camera.setCenter(18600,18600);
     background Background(window,"Textures//Grass.jpg");
     character Pawel(window,"Textures//pawel.png");
@@ -172,6 +181,12 @@ int main()
         {
             if(event.type==sf::Event::Closed)
                 window.close();
+            /*if(event.type==sf::Event::MouseWheelMoved)
+            {
+                cout<<event.mouseWheel.delta<<endl;
+                Config.zoom+=event.mouseWheel.delta;
+                Camera.zoom(Config.zoom);
+            }*/
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
             BoostSpeed=1.5f;
@@ -189,13 +204,16 @@ int main()
         window.clear(sf::Color(30,100,30));
         Background.Update();
         for(int i=0;i<stone.size();i++)
-            stone[i]->Update(Pawel);
+            if(stone[i]->Update(Pawel))
+                stone.erase(stone.begin()+i);
         for(int i=0;i<stick.size();i++)
-            stick[i]->Update(Pawel);
+            if(stick[i]->Update(Pawel))
+
         for(int i=0;i<f1.size();i++)
-            f1[i]->Update(Pawel);
+            if(f1[i]->Update(Pawel))
+
         for(int i=0;i<f2.size();i++)
-            f2[i]->Update(Pawel);
+            if(f2[i]->Update(Pawel))
 
         Pawel.Update(Camera.getCenter());
         window.display();
