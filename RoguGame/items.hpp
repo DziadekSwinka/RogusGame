@@ -6,6 +6,9 @@
 
 #include "character.hpp"
 
+const short numberOfItems=4;
+//this same var in file equipment.hpp
+
 struct
 {
     sf::Texture txt[4];
@@ -21,7 +24,7 @@ private:
 public:
     item(sf::RenderWindow &window1,short type):window(window1)
     {
-        if(0>type || type>=4)
+        if(0>type || type>=numberOfItems)
             throw std::logic_error("Wrong type of item");
         sprite.setTexture(stat.txt[type]);
         sprite.setScale(0.2f,0.2f);

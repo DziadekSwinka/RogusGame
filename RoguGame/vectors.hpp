@@ -6,6 +6,7 @@
 #include "items.hpp"
 #include "equipment.hpp"
 
+
 struct
 {
     std::vector<item*>(stone);
@@ -13,10 +14,15 @@ struct
     std::vector<item*>(f1);
     std::vector<item*>(f2);
 
+
+
     void VectorsUpdate(character &P,sf::RenderWindow *window)
     {
+        equipment tmpEQ(*window);
+
         for(int i=0;i<stone.size();i++)
             if(stone[i]->Update(P)){
+                tmpEQ.Stone++;
                 delete stone[i];
                 stone.erase(stone.begin()+i);
                 stone.push_back(new item(*window,0));
@@ -24,6 +30,7 @@ struct
 
         for(int i=0;i<stick.size();i++)
             if(stick[i]->Update(P)){
+                tmpEQ.Stick++;
                 delete stick[i];
                 stick.erase(stick.begin()+i);
                 stick.push_back(new item(*window,1));
@@ -31,6 +38,7 @@ struct
 
         for(int i=0;i<f1.size();i++)
             if(f1[i]->Update(P)){
+                tmpEQ.Flower1++;
                 delete f1[i];
                 f1.erase(f1.begin()+i);
                 f1.push_back(new item(*window,2));
@@ -38,6 +46,7 @@ struct
 
         for(int i=0;i<f2.size();i++)
             if(f2[i]->Update(P)){
+                tmpEQ.Flower2++;
                 delete f2[i];
                 f2.erase(f2.begin()+i);
                 f2.push_back(new item(*window,3));

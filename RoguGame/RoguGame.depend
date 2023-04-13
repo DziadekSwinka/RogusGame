@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1681409871 source:c:\users\pc\documents\github\rogusgame\rogugame\main.cpp
+1681416369 source:c:\users\pc\documents\github\rogusgame\rogugame\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<iostream>
@@ -524,24 +524,24 @@
 1681396750 source:c:\users\pc\documents\github\rogusgame\rogugame\items.cpp
 	"items.hpp"
 
-1681396750 c:\users\pc\documents\github\rogusgame\rogugame\items.hpp
+1681416369 c:\users\pc\documents\github\rogusgame\rogugame\items.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
 	"character.hpp"
 
-1681401943 c:\users\pc\documents\github\rogusgame\rogugame\character.hpp
+1681410142 c:\users\pc\documents\github\rogusgame\rogugame\character.hpp
 	<SFML/Graphics.hpp>
 	"equipment.hpp"
 
-1681402580 c:\users\pc\documents\github\rogusgame\rogugame\vectors.hpp
+1681415976 c:\users\pc\documents\github\rogusgame\rogugame\vectors.hpp
 	<SFML/Graphics.hpp>
 	"items.hpp"
 	"equipment.hpp"
 
-1681409504 c:\users\pc\documents\github\rogusgame\rogugame\equipment.hpp
+1681416998 c:\users\pc\documents\github\rogusgame\rogugame\equipment.hpp
 	<SFML/Graphics.hpp>
 
-1681402269 source:c:\users\pc\documents\github\rogusgame\rogugame\equipment.cpp
+1681416983 source:c:\users\pc\documents\github\rogusgame\rogugame\equipment.cpp
 	"equipment.hpp"
 
 1681409829 c:\users\pc\documents\github\rogusgame\rogugame\application.hpp
