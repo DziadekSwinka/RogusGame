@@ -67,6 +67,7 @@ public:
         if(showText)
             window.draw(pickUp);
         showText=false;
+        equip->Update(sprite.getPosition());
     }
 };
 

@@ -17,7 +17,13 @@ public:
         rock=0;
         flower1=0;
         flower2=0;
+        backRect.setSize(sf::Vector2f(2520,500));
+        backRect.setFillColor(sf::Color(80,80,80,200));
+        backRect.setOrigin(1260,1);
     }
+    void Update(sf::Vector2f pos);
+private:
+    sf::RectangleShape backRect;
 };
 
 #endif // EQUIPMENT_HPP_INCLUDED
