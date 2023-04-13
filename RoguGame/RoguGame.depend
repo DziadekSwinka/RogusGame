@@ -1,14 +1,12 @@
 # depslib dependency file v1.0
-1681396914 source:c:\users\pc\documents\github\rogusgame\rogugame\main.cpp
+1681409871 source:c:\users\pc\documents\github\rogusgame\rogugame\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<iostream>
 	<cmath>
 	<cstdlib>
 	<vector>
-	"vectors.hpp"
-	"items.hpp"
-	"equipment.hpp"
+	"Application.hpp"
 
 1660370567 d:\biblioteki c++\sfml-2.5.1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -540,9 +538,21 @@
 	"items.hpp"
 	"equipment.hpp"
 
-1681402612 c:\users\pc\documents\github\rogusgame\rogugame\equipment.hpp
+1681409504 c:\users\pc\documents\github\rogusgame\rogugame\equipment.hpp
 	<SFML/Graphics.hpp>
 
 1681402269 source:c:\users\pc\documents\github\rogusgame\rogugame\equipment.cpp
 	"equipment.hpp"
+
+1681409829 c:\users\pc\documents\github\rogusgame\rogugame\application.hpp
+	<SFML/Graphics.hpp>
+	"vectors.hpp"
+	"items.hpp"
+	"background.hpp"
+
+1681409810 c:\users\pc\documents\github\rogusgame\rogugame\background.hpp
+	<SFML/Graphics.hpp>
+
+1681409856 source:c:\users\pc\documents\github\rogusgame\rogugame\application.cpp
+	"Application.hpp"
 
