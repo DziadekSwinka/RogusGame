@@ -9,14 +9,14 @@
 
 #include "character.hpp"
 
-const short numberOfItems=4;    //this same var in file equipment.hpp
+const short numberOfItems=5;    //this same var in file equipment.hpp
 const short numberOfSounds=2;
 
 
 
 struct
 {
-    sf::Texture txt[4];
+    sf::Texture txt[5];
     /*sf::SoundBuffer SBF[numberOfSounds];
     sf::Sound sound;*/
 }stat;

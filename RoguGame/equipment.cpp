@@ -5,15 +5,17 @@ unsigned int equipment::Stick=0;
 unsigned int equipment::Stone=0;
 unsigned int equipment::Flower1=0;
 unsigned int equipment::Flower2=0;
+unsigned int equipment::Ore=0;
 unsigned int equipment::HP=100;
 bool equipment::isLoaded=false;
 
 void equipment::Update(sf::Vector2f pos)
 {
-    itemText[0].setString(std::to_string(Stick));
-    itemText[1].setString(std::to_string(Stone));
+    itemText[0].setString(std::to_string(Stone));
+    itemText[1].setString(std::to_string(Stick));
     itemText[2].setString(std::to_string(Flower1));
     itemText[3].setString(std::to_string(Flower2));
+    itemText[4].setString(std::to_string(Ore));
     backRect.setPosition(pos.x,pos.y+1600);
     window.draw(backRect);
     for(int i=0;i<NumberOfItems;i++)

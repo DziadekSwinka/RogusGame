@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 
-const short NumberOfItems=4;
+const short NumberOfItems=5;
 //this same var in file items.hpp
 
 class equipment
@@ -13,6 +13,7 @@ public:
     static unsigned int Stone;
     static unsigned int Flower1;
     static unsigned int Flower2;
+    static unsigned int Ore;
     static unsigned int HP;
     static bool isLoaded;
     sf::RenderWindow &window;
@@ -32,6 +33,7 @@ public:
             itemTexture[1].loadFromFile("Textures\\stick.png");
             itemTexture[2].loadFromFile("Textures\\flower1.png");
             itemTexture[3].loadFromFile("Textures\\flower2.png");
+            itemTexture[4].loadFromFile("Textures\\ore.png");
             isLoaded=true;
         }
 

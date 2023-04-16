@@ -13,6 +13,7 @@ struct
     std::vector<item*>(stick);
     std::vector<item*>(f1);
     std::vector<item*>(f2);
+    std::vector<item*>(ore);
 
 
 
@@ -51,6 +52,13 @@ struct
                 f2.erase(f2.begin()+i);
                 f2.push_back(new item(*window,3));
             }
+        for(int i=0;i<ore.size();i++)
+            if(ore[i]->Update(P)){
+                tmpEQ.Ore++;
+                delete ore[i];
+                ore.erase(ore.begin()+i);
+                ore.push_back(new item(*window,4));
+            }
     }
     void ini(sf::RenderWindow *window)
     {
@@ -63,6 +71,8 @@ struct
             f1.push_back(new item(*window,2));
             f2.push_back(new item(*window,3));
         }
+        for(int i=0;i<15;i++)
+            ore.push_back(new item(*window,4));
     }
 }vec;
 

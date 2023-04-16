@@ -15,16 +15,20 @@ private:
     sf::Clock clock;
     sf::Font GochiHand_Regular;
     sf::Text pickUp;
-    sf::Vector2f Center;
+    sf::Vector2f Center,Rsize;
+    sf::RectangleShape *red_rect,*white_rect;
     equipment *equip;
     bool showText;
     int i;
     friend class item;
 
 public:
+    unsigned int HP;
     character(sf::RenderWindow &window1,std::string path):window(window1)
     {
         equip=new equipment(window);
+        red_rect=new sf::RectangleShape(sf::Vector2f(500,50));
+        white_rect=new sf::RectangleShape(sf::Vector2f(500,50));
         txt.loadFromFile(path);
         sprite.setTexture(txt);
         sprite.setScale(0.6,0.6);
@@ -34,13 +38,21 @@ public:
         pickUp.setString("Podnies [E]");
         pickUp.setColor(sf::Color::Magenta);
         pickUp.setCharacterSize(110);
+        red_rect->setFillColor(sf::Color::Red);
+        red_rect->setOutlineColor(sf::Color::Black);
+        red_rect->setOutlineThickness(5);
+        white_rect->setOutlineColor(sf::Color::Black);
+        white_rect->setOutlineThickness(5);
         i=0;
     };
     void Update(sf::Vector2f veCam)
     {
         Center=veCam;
+        HP=equip->HP;
         sprite.setPosition(Center);
-        pickUp.setPosition(Center.x-220,Center.y-600);
+        pickUp.setPosition(Center.x-250,Center.y-800);
+        red_rect->setPosition(Center.x-250,Center.y-600);
+        white_rect->setPosition(Center.x-250,Center.y-600);
         if(!crafting::showInterface)
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
@@ -58,16 +70,27 @@ public:
                         i=0;
                     clock.restart();
                 }
-            if(!crafting::showInterface)
-                sprite.setTextureRect(sf::IntRect(800*i,0,800,1400));
+                if(!crafting::showInterface && HP>0)
+                    sprite.setTextureRect(sf::IntRect(800*i,0,800,1400));
             }else
             {
                 i=0;
                 sprite.setTextureRect(sf::IntRect(2400,0,800,1400));
+                if(HP<=0)
+                {
+                    sprite.setTextureRect(sf::IntRect(800*4,0,800,1400));
+                }
             }
+        Rsize=sf::Vector2f(HP*5,red_rect->getSize().y);
+        red_rect->setSize(Rsize);
         window.draw(sprite);
-        if(showText)
-            window.draw(pickUp);
+        if(HP>0)
+        {
+            window.draw(*white_rect);
+            window.draw(*red_rect);
+            if(showText)
+                window.draw(pickUp);
+        }
         showText=false;
         if(!crafting::showInterface)
             equip->Update(sprite.getPosition());

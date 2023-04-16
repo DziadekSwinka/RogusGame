@@ -523,7 +523,7 @@
 1681552961 source:c:\users\pc\documents\github\rogusgame\rogugame\items.cpp
 	"items.hpp"
 
-1681552961 c:\users\pc\documents\github\rogusgame\rogugame\items.hpp
+1681647930 c:\users\pc\documents\github\rogusgame\rogugame\items.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<iostream>
@@ -531,20 +531,20 @@
 	<ctime>
 	"character.hpp"
 
-1681636759 c:\users\pc\documents\github\rogusgame\rogugame\character.hpp
+1681662013 c:\users\pc\documents\github\rogusgame\rogugame\character.hpp
 	<SFML/Graphics.hpp>
 	"equipment.hpp"
 	"crafting.hpp"
 
-1681480452 c:\users\pc\documents\github\rogusgame\rogugame\vectors.hpp
+1681648152 c:\users\pc\documents\github\rogusgame\rogugame\vectors.hpp
 	<SFML/Graphics.hpp>
 	"items.hpp"
 	"equipment.hpp"
 
-1681635155 c:\users\pc\documents\github\rogusgame\rogugame\equipment.hpp
+1681648102 c:\users\pc\documents\github\rogusgame\rogugame\equipment.hpp
 	<SFML/Graphics.hpp>
 
-1681552961 source:c:\users\pc\documents\github\rogusgame\rogugame\equipment.cpp
+1681651717 source:c:\users\pc\documents\github\rogusgame\rogugame\equipment.cpp
 	"equipment.hpp"
 	"Enemy.hpp"
 
@@ -560,21 +560,25 @@
 1681409810 c:\users\pc\documents\github\rogusgame\rogugame\background.hpp
 	<SFML/Graphics.hpp>
 
-1681635684 source:c:\users\pc\documents\github\rogusgame\rogugame\application.cpp
+1681660875 source:c:\users\pc\documents\github\rogusgame\rogugame\application.cpp
 	"Application.hpp"
 
-1681635038 c:\users\pc\documents\github\rogusgame\rogugame\enemy.hpp
+1681658922 c:\users\pc\documents\github\rogusgame\rogugame\enemy.hpp
 	<SFML/Graphics.hpp>
 	<cmath>
+	<iostream>
 	"crafting.hpp"
+	"equipment.hpp"
 
-1681644547 source:c:\users\pc\documents\github\rogusgame\rogugame\enemy.cpp
+1681662013 source:c:\users\pc\documents\github\rogusgame\rogugame\enemy.cpp
 	"Enemy.hpp"
 
-1681645352 c:\users\pc\documents\github\rogusgame\rogugame\crafting.hpp
+1681668562 c:\users\pc\documents\github\rogusgame\rogugame\crafting.hpp
 	<SFML/Graphics.hpp>
-	<iostream>
+	"recipe.hpp"
 
-1681644547 source:c:\users\pc\documents\github\rogusgame\rogugame\crafting.cpp
+1681664492 source:c:\users\pc\documents\github\rogusgame\rogugame\crafting.cpp
 	"crafting.hpp"
+
+1681668158 c:\users\pc\documents\github\rogusgame\rogugame\recipe.hpp
 

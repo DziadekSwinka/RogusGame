@@ -3,8 +3,12 @@
 
 #include <SFML/Graphics.hpp>
 #include <cmath>
+#include <iostream>
 
 #include "crafting.hpp"
+#include "equipment.hpp"
+
+using namespace std;
 
 class enemy
 {
@@ -13,6 +17,7 @@ private:
     sf::Sprite sprite;
     sf::Texture txt;
     sf::Vector2f pos;
+    sf::Clock time;
     bool isAlive;
     double calcDir(sf::Vector2f characterPos);
     double alpha,a,b,c;

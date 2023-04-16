@@ -13,7 +13,14 @@ void enemy::Update(sf::Vector2f characterPos)
             pos.x+=b;
             pos.y+=a;
         }
-
+        if(abs(characterPos.x-pos.x)<500 && abs(characterPos.y-pos.y)<500 && time.getElapsedTime().asSeconds()>3)
+        {
+            if(equipment::HP<5 && equipment::HP>0)
+                equipment::HP=0;
+            if(equipment::HP>=5)
+                equipment::HP-=5;
+            time.restart();
+        }
         sprite.setPosition(pos.x,pos.y);
         window.draw(sprite);
     }
