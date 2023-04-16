@@ -4,6 +4,7 @@
 #include<SFML/Graphics.hpp>
 
 #include "equipment.hpp"
+#include "crafting.hpp"
 
 class character
 {
@@ -40,34 +41,36 @@ public:
         Center=veCam;
         sprite.setPosition(Center);
         pickUp.setPosition(Center.x-220,Center.y-600);
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        {
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                if(-sprite.getScale().x<0)
-                    sprite.setScale(-sprite.getScale().x,sprite.getScale().y);
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                if(-sprite.getScale().x>0)
-                    sprite.setScale(-sprite.getScale().x,sprite.getScale().y);
-
-            if(clock.getElapsedTime().asSeconds()>=0.2)
+        if(!crafting::showInterface)
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
-                i++;
-                if(i>2)
-                    i=0;
-                clock.restart();
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                    if(-sprite.getScale().x<0)
+                        sprite.setScale(-sprite.getScale().x,sprite.getScale().y);
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                    if(-sprite.getScale().x>0)
+                        sprite.setScale(-sprite.getScale().x,sprite.getScale().y);
+
+                if(clock.getElapsedTime().asSeconds()>=0.2)
+                {
+                    i++;
+                    if(i>2)
+                        i=0;
+                    clock.restart();
+                }
+            if(!crafting::showInterface)
+                sprite.setTextureRect(sf::IntRect(800*i,0,800,1400));
+            }else
+            {
+                i=0;
+                sprite.setTextureRect(sf::IntRect(2400,0,800,1400));
             }
-            sprite.setTextureRect(sf::IntRect(800*i,0,800,1400));
-        }else
-        {
-            i=0;
-            sprite.setTextureRect(sf::IntRect(2400,0,800,1400));
-        }
         window.draw(sprite);
         if(showText)
             window.draw(pickUp);
         showText=false;
-        equip->Update(sprite.getPosition());
+        if(!crafting::showInterface)
+            equip->Update(sprite.getPosition());
     }
 };
 

@@ -2,10 +2,13 @@
 #define APPLICATION_HPP_INCLUDED
 
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 #include "vectors.hpp"
 #include "items.hpp"
 #include "background.hpp"
+#include "Enemy.hpp"
+#include "crafting.hpp"
 
 void prep_txt_items();
 void Application();
