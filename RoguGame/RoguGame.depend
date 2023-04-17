@@ -591,9 +591,10 @@
 1681755013 source:c:\users\pc\documents\github\rogusgame\rogugame\weapon.cpp
 	"weapon.hpp"
 
-1681754940 c:\users\pc\documents\github\rogusgame\rogugame\ammunition.hpp
+1681756086 c:\users\pc\documents\github\rogusgame\rogugame\ammunition.hpp
 	<SFML/Graphics.hpp>
+	<cmath>
 
-1681754793 source:c:\users\pc\documents\github\rogusgame\rogugame\ammunition.cpp
+1681756074 source:c:\users\pc\documents\github\rogusgame\rogugame\ammunition.cpp
 	"ammunition.hpp"
 
