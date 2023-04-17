@@ -531,10 +531,11 @@
 	<ctime>
 	"character.hpp"
 
-1681662013 c:\users\pc\documents\github\rogusgame\rogugame\character.hpp
+1681751200 c:\users\pc\documents\github\rogusgame\rogugame\character.hpp
 	<SFML/Graphics.hpp>
 	"equipment.hpp"
 	"crafting.hpp"
+	"weapon.hpp"
 
 1681648152 c:\users\pc\documents\github\rogusgame\rogugame\vectors.hpp
 	<SFML/Graphics.hpp>
@@ -560,7 +561,7 @@
 1681409810 c:\users\pc\documents\github\rogusgame\rogugame\background.hpp
 	<SFML/Graphics.hpp>
 
-1681660875 source:c:\users\pc\documents\github\rogusgame\rogugame\application.cpp
+1681749578 source:c:\users\pc\documents\github\rogusgame\rogugame\application.cpp
 	"Application.hpp"
 
 1681658922 c:\users\pc\documents\github\rogusgame\rogugame\enemy.hpp
@@ -573,12 +574,26 @@
 1681662013 source:c:\users\pc\documents\github\rogusgame\rogugame\enemy.cpp
 	"Enemy.hpp"
 
-1681668562 c:\users\pc\documents\github\rogusgame\rogugame\crafting.hpp
+1681751200 c:\users\pc\documents\github\rogusgame\rogugame\crafting.hpp
 	<SFML/Graphics.hpp>
 	"recipe.hpp"
 
-1681664492 source:c:\users\pc\documents\github\rogusgame\rogugame\crafting.cpp
+1681741708 source:c:\users\pc\documents\github\rogusgame\rogugame\crafting.cpp
 	"crafting.hpp"
 
 1681668158 c:\users\pc\documents\github\rogusgame\rogugame\recipe.hpp
+
+1681754793 c:\users\pc\documents\github\rogusgame\rogugame\weapon.hpp
+	<SFML/Graphics.hpp>
+	<vector>
+	"ammunition.hpp"
+
+1681755013 source:c:\users\pc\documents\github\rogusgame\rogugame\weapon.cpp
+	"weapon.hpp"
+
+1681754940 c:\users\pc\documents\github\rogusgame\rogugame\ammunition.hpp
+	<SFML/Graphics.hpp>
+
+1681754793 source:c:\users\pc\documents\github\rogusgame\rogugame\ammunition.cpp
+	"ammunition.hpp"
 

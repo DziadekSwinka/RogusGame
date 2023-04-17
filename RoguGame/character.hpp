@@ -5,6 +5,7 @@
 
 #include "equipment.hpp"
 #include "crafting.hpp"
+#include "weapon.hpp"
 
 class character
 {
@@ -18,6 +19,7 @@ private:
     sf::Vector2f Center,Rsize;
     sf::RectangleShape *red_rect,*white_rect;
     equipment *equip;
+    weapon *gun;
     bool showText;
     int i;
     friend class item;
@@ -29,6 +31,7 @@ public:
         equip=new equipment(window);
         red_rect=new sf::RectangleShape(sf::Vector2f(500,50));
         white_rect=new sf::RectangleShape(sf::Vector2f(500,50));
+        gun=new weapon(window);
         txt.loadFromFile(path);
         sprite.setTexture(txt);
         sprite.setScale(0.6,0.6);
@@ -84,6 +87,7 @@ public:
         Rsize=sf::Vector2f(HP*5,red_rect->getSize().y);
         red_rect->setSize(Rsize);
         window.draw(sprite);
+        gun->Update(veCam);
         if(HP>0)
         {
             window.draw(*white_rect);

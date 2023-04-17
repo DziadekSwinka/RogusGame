@@ -17,6 +17,7 @@ void Application()
     sf::Sprite Title;
     sf::Texture TitleTxt;
     TitleTxt.loadFromFile("Textures//Title.jpg");
+    //TitleTxt.loadFromFile("Textures//DSstudio.png");
     Title.setTexture(TitleTxt);
     sf::RenderWindow window(sf::VideoMode(Config.DIM.x,Config.DIM.y),"RogusGame");
     window.draw(Title);
@@ -72,8 +73,6 @@ void Application()
             else Crafting.showInterface=true;
             TabTime.restart();
         }
-
-
         window.setView(Camera);
         window.clear(sf::Color(30,100,30));
         Background.Update();
