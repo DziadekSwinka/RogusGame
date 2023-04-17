@@ -6,13 +6,17 @@
 
 #include "ammunition.hpp"
 
+const float loadingTime=2.5;
+
 class weapon
 {
 public:
     weapon(sf::RenderWindow &window1);
     void Update(sf::Vector2f Center);
-    std::vector<ammunition*>(ammo);
+    static std::vector<ammunition*>(ammo);
+    static void Destr(int i);
 private:
+    sf::Clock Loading;
     sf::RenderWindow &window;
     sf::Sprite sprite;
     sf::Texture txt;

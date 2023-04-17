@@ -1,5 +1,7 @@
 #include "weapon.hpp"
 
+std::vector<ammunition*>weapon::ammo;
+
 weapon::weapon(sf::RenderWindow &window1):window(window1)
 {
     txt.loadFromFile("Textures\\gun.png");
@@ -8,7 +10,11 @@ weapon::weapon(sf::RenderWindow &window1):window(window1)
     sprite.setScale(0.3,0.3);
     fix=140;
 }
-
+void weapon::Destr(int i)
+{
+    delete ammo[i];
+    ammo.erase(ammo.begin()+i);
+}
 void weapon::Update(sf::Vector2f Center)
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
@@ -45,10 +51,16 @@ void weapon::Update(sf::Vector2f Center)
         if(-sprite.getScale().y>0)
             sprite.setScale(sprite.getScale().x,-sprite.getScale().y);
     }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && Loading.getElapsedTime().asSeconds()>2.5f)
+    {
         ammo.push_back(new ammunition(window,sprite.getPosition(),sprite.getRotation()));
+        Loading.restart();
+    }
     for(int i=0;i<ammo.size();i++)
-        ammo[i]->Update(Center);
+        if(ammo[i]->Update(Center))
+        {
+            Destr(i);
+        }
     sprite.setPosition(Center.x+fix,Center.y);
     window.draw(sprite);
 }

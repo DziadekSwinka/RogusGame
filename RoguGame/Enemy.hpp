@@ -3,12 +3,11 @@
 
 #include <SFML/Graphics.hpp>
 #include <cmath>
-#include <iostream>
 
 #include "crafting.hpp"
 #include "equipment.hpp"
+#include "weapon.hpp"
 
-using namespace std;
 
 class enemy
 {
@@ -21,10 +20,13 @@ private:
     bool isAlive;
     double calcDir(sf::Vector2f characterPos);
     double alpha,a,b,c;
+    void collision();
 public:
+    float HP;
     enemy(sf::RenderWindow &window1,std::string path):window(window1)
     {
         isAlive=true;
+        HP=100;
         txt.loadFromFile(path);
         sprite.setTexture(txt);
         sprite.setScale(2.f,2.f);

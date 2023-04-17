@@ -2,11 +2,9 @@
 #define CRAFTING_HPP_INCLUDED
 
 #include <SFML/Graphics.hpp>
-//#include <iostream>
 
 #include "recipe.hpp"
 
-//using namespace std;
 
 class line
 {

@@ -9,12 +9,17 @@ ammunition::ammunition(sf::RenderWindow &window1,sf::Vector2f pos,float dir):win
     sprite.setRotation(dir+90);
     DIR=dir*(M_PI/180.f);
 }
-void ammunition::Update(sf::Vector2f Camera)
+bool ammunition::Update(sf::Vector2f Camera)
 {
     a=speed*(sin(DIR));
     b=speed*(cos(DIR));
     pos.x+=b;
     pos.y+=a;
     sprite.setPosition(Camera.x+pos.x,Camera.y+pos.y);
+    if(Camera.x+pos.x<=0 || Camera.y+pos.y<=0 || Camera.x+pos.x>=37200 || Camera.y+pos.y>=37200)
+    {
+         return true;
+    }
     window.draw(sprite);
+    return false;
 }
