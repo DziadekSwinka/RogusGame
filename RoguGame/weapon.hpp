@@ -2,6 +2,7 @@
 #define WEAPON_HPP_INCLUDED
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include <vector>
 
 #include "ammunition.hpp"

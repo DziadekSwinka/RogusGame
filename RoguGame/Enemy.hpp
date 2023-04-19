@@ -7,35 +7,73 @@
 #include "crafting.hpp"
 #include "equipment.hpp"
 #include "weapon.hpp"
-
+#include "vectors.hpp"
 
 class enemy
 {
-private:
+protected:
     sf::RenderWindow &window;
     sf::Sprite sprite;
-    sf::Texture txt;
+    sf::Texture txt,txt_dmg;
     sf::Vector2f pos;
     sf::Clock time;
-    bool isAlive;
+    sf::Clock dmgTime;
+    bool noTxt;
     double calcDir(sf::Vector2f characterPos);
     double alpha,a,b,c;
-    void collision();
+    void collision(sf::Vector2f charPos);
+    void injur();
+    void ini(std::string path,std::string path2);
+    const int DMG_rate=5;
 public:
     float HP;
-    enemy(sf::RenderWindow &window1,std::string path):window(window1)
+    enemy(sf::RenderWindow &window1,std::string path,std::string path2):window(window1)
     {
-        isAlive=true;
+        ini(path,path2);
         HP=100;
-        txt.loadFromFile(path);
-        sprite.setTexture(txt);
-        sprite.setScale(2.f,2.f);
-        sprite.setOrigin(txt.getSize().x/2,txt.getSize().y/2);
-        pos.x=(rand()%34700)+2500;
-        pos.y=(rand()%34700)+2500;
-        c=0.5;
+        c=0.8;
     }
     void Update(sf::Vector2f characterPos);
+};
+
+class heavy_enemy
+    :public enemy
+{
+protected:
+    const int DMG_rate=8;
+public:
+    heavy_enemy(sf::RenderWindow &window1,std::string path,std::string path2):enemy(window1,path,path2)
+    {
+        ini(path,path2);
+        HP=150;
+        c=0.5;
+    }
+};
+class axe_enemy
+    :public enemy
+{
+protected:
+    const int DMG_rate=15;
+public:
+    axe_enemy(sf::RenderWindow &window1,std::string path,std::string path2):enemy(window1,path,path2)
+    {
+        ini(path,path2);
+        HP=150;
+        c=0.4;
+    }
+};
+class shovel_enemy
+    :public enemy
+{
+protected:
+    const int DMG_rate=10;
+public:
+    shovel_enemy(sf::RenderWindow &window1,std::string path,std::string path2):enemy(window1,path,path2)
+    {
+        ini(path,path2);
+        HP=100;
+        c=0.6;
+    }
 };
 
 #endif // ENEMY_HPP_INCLUDED

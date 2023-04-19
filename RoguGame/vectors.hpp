@@ -2,6 +2,7 @@
 #define VECTORS_HPP_INCLUDED
 
 #include <SFML/Graphics.hpp>
+//#include <iostream>
 
 #include "items.hpp"
 #include "equipment.hpp"

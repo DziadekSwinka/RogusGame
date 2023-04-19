@@ -24,8 +24,17 @@ void Application()
     window.display();
 
     std::vector<enemy*>(chochol);
-    for(int i=0;i<10;i++)
-        chochol.push_back(new enemy(window,"Textures\\chochol.png"));
+    std::vector<heavy_enemy*>(chocholP);
+    std::vector<axe_enemy*>(chocholA);
+    std::vector<shovel_enemy*>(chocholS);
+    for(int i=0;i<20;i++)
+        chochol.push_back(new enemy(window,"Textures\\chochol.png","Textures\\chochol_dmg.png"));
+    for(int i=0;i<12;i++)
+        chocholP.push_back(new heavy_enemy(window,"Textures\\chochol_pancerny.png","Textures\\chochol_pancerny_dmg.png"));
+    for(int i=0;i<6;i++)
+        chocholA.push_back(new axe_enemy(window,"Textures\\chochol_siekiera.png","Textures\\chochol_siekiera_dmg.png"));
+    for(int i=0;i<6;i++)
+        chocholS.push_back(new shovel_enemy(window,"Textures\\chochol_lopata.png","Textures\\chochol_lopata_dmg.png"));
     crafting Crafting(window,/*static_cast<sf::Vector2f>*/(Config.DIM));
     prep_txt_items();
     vec.ini(&window);
@@ -79,6 +88,12 @@ void Application()
         vec.VectorsUpdate(Pawel,&window);
         for(int i=0;i<chochol.size();i++)
             chochol[i]->Update(Camera.getCenter());
+        for(int i=0;i<chocholP.size();i++)
+            chocholP[i]->Update(Camera.getCenter());
+        for(int i=0;i<chocholA.size();i++)
+            chocholA[i]->Update(Camera.getCenter());
+        for(int i=0;i<chocholS.size();i++)
+            chocholS[i]->Update(Camera.getCenter());
         Pawel.Update(Camera.getCenter());
         if(Crafting.showInterface)
             Crafting.Update(Camera.getCenter());

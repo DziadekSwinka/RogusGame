@@ -52,7 +52,25 @@
 		<Linker>
 			<Add directory="D:/Biblioteki C++/SFML-2.5.1/lib" />
 		</Linker>
+		<Unit filename="Application.cpp" />
+		<Unit filename="Application.hpp" />
+		<Unit filename="Enemy.cpp" />
+		<Unit filename="Enemy.hpp" />
+		<Unit filename="ammunition.cpp" />
+		<Unit filename="ammunition.hpp" />
+		<Unit filename="background.hpp" />
+		<Unit filename="character.hpp" />
+		<Unit filename="crafting.cpp" />
+		<Unit filename="crafting.hpp" />
+		<Unit filename="equipment.cpp" />
+		<Unit filename="equipment.hpp" />
+		<Unit filename="items.cpp" />
+		<Unit filename="items.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="recipe.hpp" />
+		<Unit filename="vectors.hpp" />
+		<Unit filename="weapon.cpp" />
+		<Unit filename="weapon.hpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

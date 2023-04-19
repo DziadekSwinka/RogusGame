@@ -46,6 +46,14 @@ public:
         /*for(int i=0;i<numberOfSounds;i++)
             stat.SBF[i].loadFromFile("Sounds\\"+SoundsPath[i]);*/
     }
+    item(sf::RenderWindow &window1,sf::Vector2f position,short type):window(window1),pos(position)
+    {
+        if(0>type || type>=numberOfItems)
+            throw std::logic_error("Wrong type of item");
+        sprite.setTexture(stat.txt[type]);
+        sprite.setScale(0.2f,0.2f);
+        sprite.setOrigin((stat.txt[type].getSize().x/2),(stat.txt[type].getSize().y/2));
+    }
     ~item()
     {
 
