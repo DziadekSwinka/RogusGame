@@ -60,6 +60,8 @@
 		<Unit filename="ammunition.hpp" />
 		<Unit filename="background.hpp" />
 		<Unit filename="character.hpp" />
+		<Unit filename="chest.cpp" />
+		<Unit filename="chest.hpp" />
 		<Unit filename="crafting.cpp" />
 		<Unit filename="crafting.hpp" />
 		<Unit filename="equipment.cpp" />

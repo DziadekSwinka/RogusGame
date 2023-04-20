@@ -4,6 +4,8 @@ std::vector<ammunition*>weapon::ammo;
 
 weapon::weapon(sf::RenderWindow &window1):window(window1)
 {
+    buffer.loadFromFile("Sounds\\piu_piu.wav");
+    sound.setBuffer(buffer);
     txt.loadFromFile("Textures\\gun.png");
     sprite.setTexture(txt);
     sprite.setOrigin(350,500);
@@ -51,10 +53,16 @@ void weapon::Update(sf::Vector2f Center)
         if(-sprite.getScale().y>0)
             sprite.setScale(sprite.getScale().x,-sprite.getScale().y);
     }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && Loading.getElapsedTime().asSeconds()>2.5f)
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && Loading.getElapsedTime().asSeconds()>2.5f && equipment::Gun)
     {
-        ammo.push_back(new ammunition(window,sprite.getPosition(),sprite.getRotation()));
-        Loading.restart();
+        if(equipment::Bullets>0)
+        {
+            ammo.push_back(new ammunition(window,sprite.getPosition(),sprite.getRotation()));
+            equipment::Bullets--;
+            sound.play();
+            Loading.restart();
+        }
+
     }
     for(int i=0;i<ammo.size();i++)
         if(ammo[i]->Update(Center))

@@ -1,7 +1,8 @@
 #ifndef CHARACTER_HPP_INCLUDED
 #define CHARACTER_HPP_INCLUDED
 
-#include<SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include "equipment.hpp"
 #include "crafting.hpp"
@@ -18,6 +19,8 @@ private:
     sf::Text pickUp;
     sf::Vector2f Center,Rsize;
     sf::RectangleShape *red_rect,*white_rect;
+    sf::SoundBuffer buffer;
+    sf::Sound sound;
     equipment *equip;
     weapon *gun;
     bool showText;
@@ -28,6 +31,10 @@ public:
     unsigned int HP;
     character(sf::RenderWindow &window1,std::string path):window(window1)
     {
+        buffer.loadFromFile("Sounds\\steps.wav");
+        sound.setBuffer(buffer);
+        sound.setLoop(true);
+        sound.setVolume(40);
         equip=new equipment(window);
         red_rect=new sf::RectangleShape(sf::Vector2f(500,50));
         white_rect=new sf::RectangleShape(sf::Vector2f(500,50));
@@ -59,6 +66,8 @@ public:
         if(!crafting::showInterface)
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
+                if(sound.getStatus()!=sf::Sound::Playing)
+                    sound.play();
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                     if(-sprite.getScale().x<0)
                         sprite.setScale(-sprite.getScale().x,sprite.getScale().y);
@@ -77,6 +86,7 @@ public:
                     sprite.setTextureRect(sf::IntRect(800*i,0,800,1400));
             }else
             {
+                sound.stop();
                 i=0;
                 sprite.setTextureRect(sf::IntRect(2400,0,800,1400));
                 if(HP<=0)
@@ -87,6 +97,7 @@ public:
         Rsize=sf::Vector2f(HP*5,red_rect->getSize().y);
         red_rect->setSize(Rsize);
         window.draw(sprite);
+        if(equipment::Gun)
         gun->Update(veCam);
         if(HP>0)
         {

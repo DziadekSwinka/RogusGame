@@ -70,11 +70,10 @@ void enemy::injur()
 {
     if(HP>=50)
         HP-=50;
-    /*if(HP==0)
+    if(HP==0)
     {
-        vec.f1.push_back(new item(window,pos,2));       //nie dziala
-    }*/
-
+       //vec.Chest.push_back(new chest(window,pos));
+    }
     noTxt=0;
     dmgTime.restart();
 }

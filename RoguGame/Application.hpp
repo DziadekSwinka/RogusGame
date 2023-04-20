@@ -2,6 +2,7 @@
 #define APPLICATION_HPP_INCLUDED
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <vector>
 
 #include "vectors.hpp"

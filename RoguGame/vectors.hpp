@@ -2,11 +2,11 @@
 #define VECTORS_HPP_INCLUDED
 
 #include <SFML/Graphics.hpp>
-//#include <iostream>
+#include <iostream>
 
 #include "items.hpp"
 #include "equipment.hpp"
-
+#include "chest.hpp"
 
 struct
 {
@@ -16,7 +16,7 @@ struct
     std::vector<item*>(f2);
     std::vector<item*>(ore);
 
-
+    std::vector<chest*>(Chest);
 
     void VectorsUpdate(character &P,sf::RenderWindow *window)
     {
@@ -60,6 +60,9 @@ struct
                 ore.erase(ore.begin()+i);
                 ore.push_back(new item(*window,4));
             }
+        /*for(int i=0;i<Chest.size();i++)
+            Chest[i]->Update(P);
+        std::cout<<Chest.size()<<std::endl;*/
     }
     void ini(sf::RenderWindow *window)
     {

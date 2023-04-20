@@ -22,7 +22,14 @@ void Application()
     sf::RenderWindow window(sf::VideoMode(Config.DIM.x,Config.DIM.y),"RogusGame");
     window.draw(Title);
     window.display();
-
+//----------------------------------------Wczytano okno tytulowe------------------------------------------------
+    sf::SoundBuffer buffer;
+    sf::Sound sound;
+    //buffer.loadFromFile("Sounds\\eeee paraparubuja.wav");
+    buffer.loadFromFile("Sounds\\Otjanbird-Pt.-II.wav");
+    sound.setBuffer(buffer);
+    sound.setLoop(true);
+    sound.setVolume(20);
     std::vector<enemy*>(chochol);
     std::vector<heavy_enemy*>(chocholP);
     std::vector<axe_enemy*>(chocholA);
@@ -46,7 +53,7 @@ void Application()
     background Background(window,"Textures//Grass.jpg");
 
     character Pawel(window,"Textures//pawel.png");
-
+    sound.play();
     while(window.isOpen())
     {
         sf::Event event;
@@ -74,7 +81,6 @@ void Application()
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && Camera.getCenter().y<34700)
                 Camera.move(0,1.2f+BoostSpeed);
         }
-
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab) && TabTime.getElapsedTime().asSeconds()>=0.2f)
         {
             if(Crafting.showInterface==true)

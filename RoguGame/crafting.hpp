@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "recipe.hpp"
-
+#include "equipment.hpp"
 
 class line
 {
@@ -15,6 +15,7 @@ private:
     sf::Vector2f pos;
     sf::Text text[6];
     sf::Font GochiHand_Regular;
+    void craft(int n);
 public:
     line(sf::RenderWindow &window1,float posX,float posY):window(window1)
     {
@@ -46,6 +47,10 @@ public:
         if(mouse.x-125<pos.x && mouse.x+125>pos.x && mouse.y-62>(85*i)-62+225 && mouse.y-62<(85*i)+225)
         {
             sprite.setTexture(txt1);
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+            {
+                craft(i);
+            }
         }else
             sprite.setTexture(txt2);
         window.draw(sprite);

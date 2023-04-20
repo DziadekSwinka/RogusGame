@@ -2,8 +2,6 @@
 
 int item::PlayingNumber=0;
 //bool item::isLoaded=false;
-using std::cout;
-using std::endl;
 
 bool item::Update(character &P)
 {
