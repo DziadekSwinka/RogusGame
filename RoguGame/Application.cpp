@@ -51,7 +51,7 @@ void Application()
     Camera.zoom(Config.zoom);
     Camera.setCenter(18600,18600);
     background Background(window,"Textures//Grass.jpg");
-
+    SoundEvent *Sound=new SoundEvent();
     character Pawel(window,"Textures//pawel.png");
     sound.play();
     while(window.isOpen())
@@ -88,18 +88,19 @@ void Application()
             else Crafting.showInterface=true;
             TabTime.restart();
         }
+        Sound->update();
         window.setView(Camera);
         window.clear(sf::Color(30,100,30));
         Background.Update();
         vec.VectorsUpdate(Pawel,&window);
         for(int i=0;i<chochol.size();i++)
-            chochol[i]->Update(Camera.getCenter());
+            chochol[i]->Update(Camera.getCenter(),Sound);
         for(int i=0;i<chocholP.size();i++)
-            chocholP[i]->Update(Camera.getCenter());
+            chocholP[i]->Update(Camera.getCenter(),Sound);
         for(int i=0;i<chocholA.size();i++)
-            chocholA[i]->Update(Camera.getCenter());
+            chocholA[i]->Update(Camera.getCenter(),Sound);
         for(int i=0;i<chocholS.size();i++)
-            chocholS[i]->Update(Camera.getCenter());
+            chocholS[i]->Update(Camera.getCenter(),Sound);
         Pawel.Update(Camera.getCenter());
         if(Crafting.showInterface)
             Crafting.Update(Camera.getCenter());

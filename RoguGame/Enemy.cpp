@@ -12,7 +12,7 @@ void enemy::ini(std::string path,std::string path2)
     pos.x=(rand()%34700)+2500;
     pos.y=(rand()%34700)+2500;
 }
-void enemy::Update(sf::Vector2f characterPos)
+void enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound)
 {
     if(HP>0)
     {
@@ -25,7 +25,7 @@ void enemy::Update(sf::Vector2f characterPos)
             pos.x+=b;
             pos.y+=a;
         }
-        if(abs(characterPos.x-pos.x)<500 && abs(characterPos.y-pos.y)<500 && time.getElapsedTime().asSeconds()>3)
+        if(abs(characterPos.x-pos.x)<500 && abs(characterPos.y-pos.y)<500 && time.getElapsedTime().asSeconds()>AttackTime)
         {
             if(equipment::HP<DMG_rate && equipment::HP>0)
                 equipment::HP=0;
@@ -34,7 +34,7 @@ void enemy::Update(sf::Vector2f characterPos)
             time.restart();
         }
         if(abs(characterPos.x-pos.x)<6000 && abs(characterPos.y-pos.y)<6000 && !crafting::showInterface)
-            collision(characterPos);
+            collision(characterPos,Sound);
         if(dmgTime.getElapsedTime().asSeconds()>0.3)
             noTxt=1;
         if(noTxt)
@@ -53,7 +53,7 @@ double enemy::calcDir(sf::Vector2f characterPos)
     //dir/=M_PI/180.f;      //to degree
     return dir;
 }
-void enemy::collision(sf::Vector2f charPos)
+void enemy::collision(sf::Vector2f charPos,SoundEvent *Sound)
 {
     for(int i=0;i<weapon::ammo.size();i++)
     {
@@ -62,17 +62,17 @@ void enemy::collision(sf::Vector2f charPos)
             if(AMpos.y+charPos.y>pos.y-txt.getSize().y && AMpos.y+charPos.y<pos.y+txt.getSize().y)
             {
                 weapon::Destr(i);
-                injur();
+                injur(Sound);
             }
     }
 }
-void enemy::injur()
+void enemy::injur(SoundEvent *Sound)
 {
     if(HP>=50)
         HP-=50;
     if(HP==0)
     {
-       //vec.Chest.push_back(new chest(window,pos));
+       Sound->pushToQueue(std::rand()%6);
     }
     noTxt=0;
     dmgTime.restart();

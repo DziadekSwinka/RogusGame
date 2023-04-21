@@ -1,14 +1,9 @@
 #include "items.hpp"
 
-int item::PlayingNumber=0;
 //bool item::isLoaded=false;
 
 bool item::Update(character &P)
 {
-        if(PlayingNumber>0)
-        {
-
-        }
         if(abs(P.Center.x-pos.x)<250 && abs(P.Center.y-pos.y)<250)
         {
             P.showText=true;

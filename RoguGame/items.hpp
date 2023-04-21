@@ -10,9 +10,6 @@
 #include "character.hpp"
 
 const short numberOfItems=5;    //this same var in file equipment.hpp
-const short numberOfSounds=2;
-
-
 
 struct
 {
@@ -28,7 +25,6 @@ private:
     sf::Sprite sprite;
     sf::Clock clock;
     sf::Vector2i pos;
-    static int PlayingNumber;
     /*std::string SoundsPath[numberOfSounds]=
     {   "360stopni.wav",
         "Gangaritus.wav"};*/

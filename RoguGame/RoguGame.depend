@@ -520,10 +520,10 @@
 	<SFML/Audio/Export.hpp>
 	<string>
 
-1681934625 source:c:\users\pc\documents\github\rogusgame\rogugame\items.cpp
+1682078166 source:c:\users\pc\documents\github\rogusgame\rogugame\items.cpp
 	"items.hpp"
 
-1681842105 c:\users\pc\documents\github\rogusgame\rogugame\items.hpp
+1682078157 c:\users\pc\documents\github\rogusgame\rogugame\items.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<iostream>
@@ -552,10 +552,11 @@
 	"equipment.hpp"
 	"Enemy.hpp"
 
-1682008520 c:\users\pc\documents\github\rogusgame\rogugame\application.hpp
+1682080745 c:\users\pc\documents\github\rogusgame\rogugame\application.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<vector>
+	"sound.hpp"
 	"vectors.hpp"
 	"items.hpp"
 	"background.hpp"
@@ -565,18 +566,19 @@
 1681409810 c:\users\pc\documents\github\rogusgame\rogugame\background.hpp
 	<SFML/Graphics.hpp>
 
-1682010878 source:c:\users\pc\documents\github\rogusgame\rogugame\application.cpp
+1682083546 source:c:\users\pc\documents\github\rogusgame\rogugame\application.cpp
 	"Application.hpp"
 
-1681913622 c:\users\pc\documents\github\rogusgame\rogugame\enemy.hpp
+1682083828 c:\users\pc\documents\github\rogusgame\rogugame\enemy.hpp
 	<SFML/Graphics.hpp>
 	<cmath>
 	"crafting.hpp"
 	"equipment.hpp"
 	"weapon.hpp"
 	"vectors.hpp"
+	"sound.hpp"
 
-1682006284 source:c:\users\pc\documents\github\rogusgame\rogugame\enemy.cpp
+1682084024 source:c:\users\pc\documents\github\rogusgame\rogugame\enemy.cpp
 	"Enemy.hpp"
 
 1681927477 c:\users\pc\documents\github\rogusgame\rogugame\crafting.hpp
@@ -614,4 +616,11 @@
 	<iostream>
 	"equipment.hpp"
 	"character.hpp"
+
+1682083521 c:\users\pc\documents\github\rogusgame\rogugame\sound.hpp
+	<SFML/Audio.hpp>
+	<queue>
+
+1682080932 source:c:\users\pc\documents\github\rogusgame\rogugame\sound.cpp
+	"sound.hpp"
 
