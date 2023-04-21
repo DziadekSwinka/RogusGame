@@ -70,6 +70,8 @@
 		<Unit filename="items.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="recipe.hpp" />
+		<Unit filename="sound.cpp" />
+		<Unit filename="sound.hpp" />
 		<Unit filename="vectors.hpp" />
 		<Unit filename="weapon.cpp" />
 		<Unit filename="weapon.hpp" />
