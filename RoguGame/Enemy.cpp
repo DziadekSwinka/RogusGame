@@ -1,5 +1,7 @@
 #include "Enemy.hpp"
 
+std::vector<ThrowedItem*>mush_enemy::throwed={0};
+
 void enemy::ini(std::string path,std::string path2)
 {
     noTxt=1;
@@ -45,12 +47,52 @@ void enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound)
         window.draw(sprite);
     }
 
+}void mush_enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound)
+{
+    if(HP>0)
+    {
+        if(abs(characterPos.x-pos.x)<2500 && abs(characterPos.y-pos.y)<2500 && !crafting::showInterface)
+        {
+            /*if(updateTime.getElapsedTime().asSeconds()>0.1f)
+            {
+                */alpha=calcDir(characterPos);
+                /*updateTime.restart();
+            }
+            /*alpha+=(std::rand()%2)-1;*/
+            a=c*(sin(alpha));
+            b=c*(cos(alpha));
+            pos.x+=b;
+            pos.y+=a;
+        }
+        if(abs(characterPos.x-pos.x)<2000 && abs(characterPos.y-pos.y)<2000 && time.getElapsedTime().asSeconds()>AttackTime)
+        {
+            throwed.push_back(new ThrowedItem(window,pos,alpha/(M_PI/180.f)));
+            time.restart();
+        }
+        if(abs(characterPos.x-pos.x)<2000 && abs(characterPos.y-pos.y)<2000 && !crafting::showInterface)
+            collision(characterPos,Sound);
+        if(dmgTime.getElapsedTime().asSeconds()>0.3)
+            noTxt=1;
+        if(noTxt)
+            sprite.setTexture(txt);
+        else
+            sprite.setTexture(txt_dmg);
+        sprite.setPosition(pos.x,pos.y);
+        window.draw(sprite);
+        for(int i=throwed.size()-1;i>0;i--)
+            if(throwed[i]->Update(characterPos)==true)
+            {
+                delete throwed[i];
+                throwed.erase(throwed.begin()+i);
+            }
+
+    }
 }
 double enemy::calcDir(sf::Vector2f characterPos)
 {
     double dir;
     dir=tan((characterPos.y-pos.y)/(characterPos.x-pos.x));
-    //dir/=M_PI/180.f;      //to degree
+    dir/=M_PI/180.f;      //to degree
     return dir;
 }
 void enemy::collision(sf::Vector2f charPos,SoundEvent *Sound)

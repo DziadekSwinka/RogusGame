@@ -24,6 +24,8 @@ private:
     sf::Texture txt;
     sf::SoundBuffer buffer;
     sf::Sound sound;
+    sf::Font GochiHand_Regular;
+    sf::Text time;
     int fix;
 };
 

@@ -11,6 +11,10 @@ weapon::weapon(sf::RenderWindow &window1):window(window1)
     sprite.setOrigin(350,500);
     sprite.setScale(0.3,0.3);
     fix=140;
+    GochiHand_Regular.loadFromFile("Fonts\\GochiHand-Regular.ttf");
+    time.setFont(GochiHand_Regular);
+    time.setColor(sf::Color::Magenta);
+    time.setCharacterSize(110);
 }
 void weapon::Destr(int i)
 {
@@ -19,6 +23,8 @@ void weapon::Destr(int i)
 }
 void weapon::Update(sf::Vector2f Center)
 {
+    time.setString(std::to_string(/*round((*/loadingTime-Loading.getElapsedTime().asSeconds()/*)*10)/10*/));
+    time.setPosition(Center.x-225,Center.y-900);
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
@@ -62,7 +68,6 @@ void weapon::Update(sf::Vector2f Center)
             sound.play();
             Loading.restart();
         }
-
     }
     for(int i=0;i<ammo.size();i++)
         if(ammo[i]->Update(Center))
@@ -70,5 +75,7 @@ void weapon::Update(sf::Vector2f Center)
             Destr(i);
         }
     sprite.setPosition(Center.x+fix,Center.y);
+    if(loadingTime-Loading.getElapsedTime().asSeconds()>0)
+        window.draw(time);
     window.draw(sprite);
 }

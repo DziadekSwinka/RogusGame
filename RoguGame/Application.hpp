@@ -5,6 +5,7 @@
 #include <SFML/Audio.hpp>
 #include <vector>
 
+#include "progressBar.hpp"
 #include "sound.hpp"
 #include "vectors.hpp"
 #include "items.hpp"

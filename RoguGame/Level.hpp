@@ -1,0 +1,6 @@
+#ifndef LEVEL_HPP_INCLUDED
+#define LEVEL_HPP_INCLUDED
+
+
+
+#endif // LEVEL_HPP_INCLUDED

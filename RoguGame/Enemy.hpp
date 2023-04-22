@@ -3,12 +3,14 @@
 
 #include <SFML/Graphics.hpp>
 #include <cmath>
+#include <vector>
 
 #include "crafting.hpp"
 #include "equipment.hpp"
 #include "weapon.hpp"
 #include "vectors.hpp"
 #include "sound.hpp"
+#include "throwedItem.hpp"
 
 class enemy
 {
@@ -18,7 +20,7 @@ protected:
     sf::Texture txt,txt_dmg;
     sf::Vector2f pos;
     sf::Clock time;
-    sf::Clock dmgTime;
+    sf::Clock dmgTime,updateTime;
     bool noTxt;
     double calcDir(sf::Vector2f characterPos);
     double alpha,a,b,c;
@@ -79,6 +81,23 @@ public:
         HP=100;
         c=0.8;
     }
+};
+class mush_enemy
+    :public enemy
+{
+protected:
+    const int DMG_rate=10;
+    const float AttackTime=6;
+    static std::vector<ThrowedItem*>throwed;
+public:
+    mush_enemy(sf::RenderWindow &window1,std::string path,std::string path2):enemy(window1,path,path2)
+    {
+        ini(path,path2);
+        HP=100;
+        c=0.8;
+        sprite.setScale(0.4,0.45);
+    }
+    void Update(sf::Vector2f characterPos,SoundEvent *Sound);
 };
 
 #endif // ENEMY_HPP_INCLUDED

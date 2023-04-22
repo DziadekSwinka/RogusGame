@@ -17,32 +17,41 @@ void Application()
     sf::Sprite Title;
     sf::Texture TitleTxt;
     TitleTxt.loadFromFile("Textures//Title.jpg");
-    //TitleTxt.loadFromFile("Textures//DSstudio.png");
     Title.setTexture(TitleTxt);
     sf::RenderWindow window(sf::VideoMode(Config.DIM.x,Config.DIM.y),"RogusGame");
     window.draw(Title);
-    window.display();
+    progressBar PBar(window,Title);
 //----------------------------------------Wczytano okno tytulowe------------------------------------------------
     sf::SoundBuffer buffer;
     sf::Sound sound;
-    //buffer.loadFromFile("Sounds\\eeee paraparubuja.wav");
     buffer.loadFromFile("Sounds\\Otjanbird-Pt.-II.wav");
     sound.setBuffer(buffer);
     sound.setLoop(true);
     sound.setVolume(20);
+    PBar.Progress(15);
     std::vector<enemy*>(chochol);
+    PBar.Progress(25);
+    std::vector<mush_enemy*>(mushroom);
+    PBar.Progress(35);
     std::vector<heavy_enemy*>(chocholP);
+    PBar.Progress(45);
     std::vector<axe_enemy*>(chocholA);
+    PBar.Progress(55);
     std::vector<shovel_enemy*>(chocholS);
+    PBar.Progress(65);
     for(int i=0;i<20;i++)
         chochol.push_back(new enemy(window,"Textures\\chochol.png","Textures\\chochol_dmg.png"));
+    for(int i=0;i<20;i++)
+        mushroom.push_back(new mush_enemy(window,"Textures\\Grzyb.png","Textures\\Grzyb.png"));
     for(int i=0;i<12;i++)
         chocholP.push_back(new heavy_enemy(window,"Textures\\chochol_pancerny.png","Textures\\chochol_pancerny_dmg.png"));
     for(int i=0;i<6;i++)
         chocholA.push_back(new axe_enemy(window,"Textures\\chochol_siekiera.png","Textures\\chochol_siekiera_dmg.png"));
     for(int i=0;i<6;i++)
         chocholS.push_back(new shovel_enemy(window,"Textures\\chochol_lopata.png","Textures\\chochol_lopata_dmg.png"));
-    crafting Crafting(window,/*static_cast<sf::Vector2f>*/(Config.DIM));
+    PBar.Progress(85);
+    crafting Crafting(window,Config.DIM);
+    PBar.Progress(90);
     prep_txt_items();
     vec.ini(&window);
 
@@ -50,9 +59,10 @@ void Application()
     sf::View Camera;
     Camera.zoom(Config.zoom);
     Camera.setCenter(18600,18600);
-    background Background(window,"Textures//Grass.jpg");
+    background Background(window,"Textures//sand.jpg");
     SoundEvent *Sound=new SoundEvent();
     character Pawel(window,"Textures//pawel.png");
+    PBar.Progress(100);
     sound.play();
     while(window.isOpen())
     {
@@ -61,11 +71,6 @@ void Application()
         {
             if(event.type==sf::Event::Closed)
                 window.close();
-            /*if(event.type==sf::Event::MouseWheelMoved)
-            {
-                Config.zoom+=event.mouseWheel.delta;
-                Camera.zoom(Config.zoom);
-            }*/
         }
         if(!Crafting.showInterface && Pawel.HP>0)
         {
@@ -95,6 +100,8 @@ void Application()
         vec.VectorsUpdate(Pawel,&window);
         for(int i=0;i<chochol.size();i++)
             chochol[i]->Update(Camera.getCenter(),Sound);
+        for(int i=0;i<mushroom.size();i++)
+            mushroom[i]->Update(Camera.getCenter(),Sound);
         for(int i=0;i<chocholP.size();i++)
             chocholP[i]->Update(Camera.getCenter(),Sound);
         for(int i=0;i<chocholA.size();i++)
