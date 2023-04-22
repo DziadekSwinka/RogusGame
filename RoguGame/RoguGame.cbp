@@ -56,6 +56,8 @@
 		<Unit filename="Application.hpp" />
 		<Unit filename="Enemy.cpp" />
 		<Unit filename="Enemy.hpp" />
+		<Unit filename="Level.cpp" />
+		<Unit filename="Level.hpp" />
 		<Unit filename="ammunition.cpp" />
 		<Unit filename="ammunition.hpp" />
 		<Unit filename="background.hpp" />
@@ -69,9 +71,12 @@
 		<Unit filename="items.cpp" />
 		<Unit filename="items.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="progressBar.hpp" />
 		<Unit filename="recipe.hpp" />
 		<Unit filename="sound.cpp" />
 		<Unit filename="sound.hpp" />
+		<Unit filename="throwedItem.cpp" />
+		<Unit filename="throwedItem.hpp" />
 		<Unit filename="vectors.hpp" />
 		<Unit filename="weapon.cpp" />
 		<Unit filename="weapon.hpp" />

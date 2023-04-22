@@ -12,6 +12,7 @@
 #include "background.hpp"
 #include "Enemy.hpp"
 #include "crafting.hpp"
+#include "Level.hpp"
 
 void prep_txt_items();
 void Application();

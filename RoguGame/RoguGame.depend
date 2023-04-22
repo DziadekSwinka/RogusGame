@@ -552,7 +552,7 @@
 	"equipment.hpp"
 	"Enemy.hpp"
 
-1682194182 c:\users\pc\documents\github\rogusgame\rogugame\application.hpp
+1682195752 c:\users\pc\documents\github\rogusgame\rogugame\application.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<vector>
@@ -563,11 +563,12 @@
 	"background.hpp"
 	"Enemy.hpp"
 	"crafting.hpp"
+	"Level.hpp"
 
 1681409810 c:\users\pc\documents\github\rogusgame\rogugame\background.hpp
 	<SFML/Graphics.hpp>
 
-1682194983 source:c:\users\pc\documents\github\rogusgame\rogugame\application.cpp
+1682195320 source:c:\users\pc\documents\github\rogusgame\rogugame\application.cpp
 	"Application.hpp"
 
 1682173518 c:\users\pc\documents\github\rogusgame\rogugame\enemy.hpp
@@ -634,8 +635,12 @@
 	<SFML/Graphics.hpp>
 	<cmath>
 
-1682194173 source:c:\users\pc\documents\github\rogusgame\rogugame\level.cpp
+1682195948 source:c:\users\pc\documents\github\rogusgame\rogugame\level.cpp
+	"Level.hpp"
 
 1682195266 c:\users\pc\documents\github\rogusgame\rogugame\progressbar.hpp
 	<SFML/Graphics.hpp>
+
+1682196185 c:\users\pc\documents\github\rogusgame\rogugame\level.hpp
+	<string>
 
