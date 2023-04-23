@@ -58,7 +58,7 @@ void enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound)
                 */alpha=calcDir(characterPos);
                 /*updateTime.restart();
             }
-            /*alpha+=(std::rand()%2)-1;*/
+            alpha+=(std::rand()%2)-1;*/
             a=c*(sin(alpha));
             b=c*(cos(alpha));
             pos.x+=b;
@@ -85,7 +85,6 @@ void enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound)
                 delete throwed[i];
                 throwed.erase(throwed.begin()+i);
             }
-
     }
 }
 double enemy::calcDir(sf::Vector2f characterPos)
@@ -97,7 +96,7 @@ double enemy::calcDir(sf::Vector2f characterPos)
 }
 void enemy::collision(sf::Vector2f charPos,SoundEvent *Sound)
 {
-    for(int i=0;i<weapon::ammo.size();i++)
+    for(int i=0;i<static_cast<int>(weapon::ammo.size());i++)
     {
         sf::Vector2f AMpos=weapon::ammo[i]->pos;
         if(AMpos.x+charPos.x>pos.x-txt.getSize().x && AMpos.x+charPos.x<pos.x+txt.getSize().x)

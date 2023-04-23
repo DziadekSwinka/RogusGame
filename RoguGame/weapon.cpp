@@ -13,7 +13,7 @@ weapon::weapon(sf::RenderWindow &window1):window(window1)
     fix=140;
     GochiHand_Regular.loadFromFile("Fonts\\GochiHand-Regular.ttf");
     time.setFont(GochiHand_Regular);
-    time.setColor(sf::Color::Magenta);
+    time.setFillColor(sf::Color::Magenta);
     time.setCharacterSize(110);
 }
 void weapon::Destr(int i)
@@ -69,7 +69,7 @@ void weapon::Update(sf::Vector2f Center)
             Loading.restart();
         }
     }
-    for(int i=0;i<ammo.size();i++)
+    for(int i=0;i<static_cast<int>(ammo.size());i++)
         if(ammo[i]->Update(Center))
         {
             Destr(i);

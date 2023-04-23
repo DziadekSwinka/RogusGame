@@ -27,7 +27,7 @@ protected:
     void collision(sf::Vector2f charPos,SoundEvent *Sound);
     void injur(SoundEvent *Sound);
     void ini(std::string path,std::string path2);
-    const int DMG_rate=5;
+    const unsigned int DMG_rate=5;
     const float AttackTime=4;
 public:
     float HP;
@@ -37,7 +37,7 @@ public:
         HP=100;
         c=0.8;
     }
-    void Update(sf::Vector2f characterPos,SoundEvent *Sound);
+    virtual void Update(sf::Vector2f characterPos,SoundEvent *Sound);
 };
 
 class heavy_enemy
@@ -97,7 +97,7 @@ public:
         c=0.8;
         sprite.setScale(0.4,0.45);
     }
-    void Update(sf::Vector2f characterPos,SoundEvent *Sound);
+    virtual void Update(sf::Vector2f characterPos,SoundEvent *Sound);
 };
 
 #endif // ENEMY_HPP_INCLUDED

@@ -2,8 +2,9 @@
 #define EQUIPMENT_HPP_INCLUDED
 
 #include <SFML/Graphics.hpp>
+#include <map>
 
-const short NumberOfItems=5;
+const short NumberOfItems=6;
 //this same var in file items.hpp
 
 class equipment
@@ -13,15 +14,24 @@ public:
     static unsigned int Stone;
     static unsigned int Flower1;
     static unsigned int Flower2;
+    static unsigned int Plastic;
     static unsigned int Ore;
     static unsigned int HP;
     static unsigned int Bullets;
     static bool Gun;
+    static bool Axe;
+    static bool Shovel;
+    static bool Sword;
     static bool isLoaded;
     sf::RenderWindow &window;
+    std::map<int,bool*>items;
 
     equipment(sf::RenderWindow &window1):window(window1)
     {
+        items[1]=&Gun;
+        items[2]=&Axe;
+        items[3]=&Shovel;
+        items[4]=&Sword;
         backRect.setSize(sf::Vector2f(2516,600));
         backRect.setFillColor(sf::Color(80,80,80,220));
         backRect.setOutlineColor(sf::Color::Black);
@@ -46,30 +56,54 @@ public:
             itemTexture[2].loadFromFile("Textures\\flower1.png");
             itemTexture[3].loadFromFile("Textures\\flower2.png");
             itemTexture[4].loadFromFile("Textures\\ore.png");
+            itemTexture[5].loadFromFile("Textures\\plastic3.png");
             headIc[0].loadFromFile("Textures\\bullet.png");
             headIc[1].loadFromFile("Textures\\Gun.png");
+            headIc[2].loadFromFile("Textures\\beer.png");
+            headIc[3].loadFromFile("Textures\\axe.png");
+            headIc[4].loadFromFile("Textures\\shovel.png");
+            headIc[5].loadFromFile("Textures\\sword.png");
             isLoaded=true;
         }
         ammo.setFont(GochiHand_Regular);
-        ammo.setColor(sf::Color::Red);
+        ammo.setFillColor(sf::Color::Red);
         ammo.setCharacterSize(140);
         for(int i=0;i<NumberOfItems;i++)
         {
             itemText[i].setFont(GochiHand_Regular);
-            itemText[i].setColor(sf::Color::Red);
+            itemText[i].setFillColor(sf::Color::Red);
             itemText[i].setCharacterSize(140);
             itemSprite[i].setTexture(itemTexture[i]);
             itemSprite[i].setScale(0.1,0.1);
+            if(i==5)
+                itemSprite[i].setScale(0.2,0.2);
             itemSprite[i].setOrigin(itemTexture[i].getSize().x/2.f,itemTexture[i].getSize().y/2.f);
         }
-        for(int i=0;i<2;i++)
+        for(int i=0;i<6;i++)
         {
             headIcon[i].setTexture(headIc[i]);
             switch(i)
             {
             case 1:
                 headIcon[i].setScale(0.25,0.25);
-            break;
+                break;
+            case 2:
+                {
+                    headIcon[i].setScale(0.4,0.35);
+                    break;
+                }
+            case 3:
+                {
+                    headIcon[i].setRotation(90);
+                    headIcon[i].setScale(0.35,0.25);
+                    break;
+                }
+            case 4:
+                {
+                    headIcon[i].setRotation(90);
+                    headIcon[i].setScale(0.48,0.25);
+                    break;
+                }
             default:
                 headIcon[i].setScale(0.4,0.4);
                 break;
@@ -82,8 +116,8 @@ private:
     sf::Font GochiHand_Regular;
     sf::RectangleShape backRect,headShape,headCenter;
     sf::Text itemText[NumberOfItems],ammo;
-    sf::Texture itemTexture[NumberOfItems],headIc[2];
-    sf::Sprite itemSprite[NumberOfItems],headIcon[2];
+    sf::Texture itemTexture[NumberOfItems],headIc[6];
+    sf::Sprite itemSprite[NumberOfItems],headIcon[6];
 };
 
 #endif // EQUIPMENT_HPP_INCLUDED

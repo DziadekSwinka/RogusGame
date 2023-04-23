@@ -46,7 +46,7 @@ public:
         GochiHand_Regular.loadFromFile("Fonts\\GochiHand-Regular.ttf");
         pickUp.setFont(GochiHand_Regular);
         pickUp.setString("Podnies [E]");
-        pickUp.setColor(sf::Color::Magenta);
+        pickUp.setFillColor(sf::Color::Magenta);
         pickUp.setCharacterSize(110);
         red_rect->setFillColor(sf::Color::Red);
         red_rect->setOutlineColor(sf::Color::Black);
@@ -63,7 +63,7 @@ public:
         pickUp.setPosition(Center.x-250,Center.y-800);
         red_rect->setPosition(Center.x-250,Center.y-600);
         white_rect->setPosition(Center.x-250,Center.y-600);
-        if(!crafting::showInterface)
+        if(crafting::showInterface==false)
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
             {
                 if(sound.getStatus()!=sf::Sound::Playing)

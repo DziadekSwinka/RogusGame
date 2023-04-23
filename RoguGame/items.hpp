@@ -9,11 +9,11 @@
 
 #include "character.hpp"
 
-const short numberOfItems=5;    //this same var in file equipment.hpp
+const short numberOfItems=6;    //this same var in file equipment.hpp
 
 struct
 {
-    sf::Texture txt[5];
+    sf::Texture txt[numberOfItems+3];
     /*sf::SoundBuffer SBF[numberOfSounds];
     sf::Sound sound;*/
 }stat;
@@ -34,8 +34,15 @@ public:
     {
         if(0>type || type>=numberOfItems)
             throw std::logic_error("Wrong type of item");
-        sprite.setTexture(stat.txt[type]);
-        sprite.setScale(0.2f,0.2f);
+        if(type!=5)
+        {
+            sprite.setTexture(stat.txt[type]);
+            sprite.setScale(0.2f,0.2f);
+        }else
+        {
+            sprite.setTexture(stat.txt[type+std::rand()%4]);
+            sprite.setScale(0.3f,0.3f);
+        }
         sprite.setOrigin((stat.txt[type].getSize().x/2),(stat.txt[type].getSize().y/2));
         pos.x=(rand()%34700)+2500;
         pos.y=(rand()%34700)+2500;
@@ -46,8 +53,15 @@ public:
     {
         if(0>type || type>=numberOfItems)
             throw std::logic_error("Wrong type of item");
-        sprite.setTexture(stat.txt[type]);
-        sprite.setScale(0.2f,0.2f);
+        if(type!=5)
+        {
+            sprite.setTexture(stat.txt[type]);
+            sprite.setScale(0.2f,0.2f);
+        }else
+        {
+            sprite.setTexture(stat.txt[type+std::rand()%4]);
+            sprite.setScale(0.3f,0.3f);
+        }
         sprite.setOrigin((stat.txt[type].getSize().x/2),(stat.txt[type].getSize().y/2));
     }
     ~item()

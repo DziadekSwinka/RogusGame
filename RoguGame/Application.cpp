@@ -7,6 +7,10 @@ void prep_txt_items()
      stat.txt[2].loadFromFile("Textures\\flower1.png");
      stat.txt[3].loadFromFile("Textures\\flower2.png");
      stat.txt[4].loadFromFile("Textures\\ore.png");
+     stat.txt[5].loadFromFile("Textures\\plastic1.png");
+     stat.txt[6].loadFromFile("Textures\\plastic2.png");
+     stat.txt[7].loadFromFile("Textures\\plastic3.png");
+     stat.txt[8].loadFromFile("Textures\\plastic4.png");
 }
 
 void Application()
@@ -16,9 +20,9 @@ void Application()
     float BoostSpeed;
     sf::Sprite Title;
     sf::Texture TitleTxt;
+    sf::RenderWindow window(sf::VideoMode(Config.DIM.x,Config.DIM.y),"RogusGame");
     TitleTxt.loadFromFile("Textures//Title.jpg");
     Title.setTexture(TitleTxt);
-    sf::RenderWindow window(sf::VideoMode(Config.DIM.x,Config.DIM.y),"RogusGame");
     window.draw(Title);
     progressBar PBar(window,Title);
 //----------------------------------------Wczytano okno tytulowe------------------------------------------------
@@ -29,26 +33,17 @@ void Application()
     sound.setLoop(true);
     sound.setVolume(20);
     PBar.Progress(15);
-    std::vector<enemy*>(chochol);
+    std::vector<enemy*>chochol;
     PBar.Progress(25);
-    std::vector<mush_enemy*>(mushroom);
+    std::vector<enemy*>mushroom;
     PBar.Progress(35);
-    std::vector<heavy_enemy*>(chocholP);
+    std::vector<heavy_enemy*>chocholP;
     PBar.Progress(45);
-    std::vector<axe_enemy*>(chocholA);
+    std::vector<axe_enemy*>chocholA;
     PBar.Progress(55);
-    std::vector<shovel_enemy*>(chocholS);
+    std::vector<shovel_enemy*>chocholS;
     PBar.Progress(65);
-    for(int i=0;i<20;i++)
-        chochol.push_back(new enemy(window,"Textures\\chochol.png","Textures\\chochol_dmg.png"));
-    for(int i=0;i<20;i++)
-        mushroom.push_back(new mush_enemy(window,"Textures\\Grzyb.png","Textures\\Grzyb.png"));
-    for(int i=0;i<12;i++)
-        chocholP.push_back(new heavy_enemy(window,"Textures\\chochol_pancerny.png","Textures\\chochol_pancerny_dmg.png"));
-    for(int i=0;i<6;i++)
-        chocholA.push_back(new axe_enemy(window,"Textures\\chochol_siekiera.png","Textures\\chochol_siekiera_dmg.png"));
-    for(int i=0;i<6;i++)
-        chocholS.push_back(new shovel_enemy(window,"Textures\\chochol_lopata.png","Textures\\chochol_lopata_dmg.png"));
+    Level_Class Level(chochol,mushroom,chocholP,chocholA,chocholS,window);
     PBar.Progress(85);
     crafting Crafting(window,Config.DIM);
     PBar.Progress(90);
@@ -59,7 +54,7 @@ void Application()
     sf::View Camera;
     Camera.zoom(Config.zoom);
     Camera.setCenter(18600,18600);
-    background Background(window,"Textures//sand.jpg");
+    background Background(window,"Textures//Grass.jpg","Textures//Sand.jpg");
     SoundEvent *Sound=new SoundEvent();
     character Pawel(window,"Textures//pawel.png");
     PBar.Progress(100);
@@ -98,16 +93,7 @@ void Application()
         window.clear(sf::Color(30,100,30));
         Background.Update();
         vec.VectorsUpdate(Pawel,&window);
-        for(int i=0;i<chochol.size();i++)
-            chochol[i]->Update(Camera.getCenter(),Sound);
-        for(int i=0;i<mushroom.size();i++)
-            mushroom[i]->Update(Camera.getCenter(),Sound);
-        for(int i=0;i<chocholP.size();i++)
-            chocholP[i]->Update(Camera.getCenter(),Sound);
-        for(int i=0;i<chocholA.size();i++)
-            chocholA[i]->Update(Camera.getCenter(),Sound);
-        for(int i=0;i<chocholS.size();i++)
-            chocholS[i]->Update(Camera.getCenter(),Sound);
+        Level.Update(Camera.getCenter(),Sound);
         Pawel.Update(Camera.getCenter());
         if(Crafting.showInterface)
             Crafting.Update(Camera.getCenter());
