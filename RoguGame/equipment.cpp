@@ -49,7 +49,7 @@ void equipment::Update(sf::Vector2f pos)
     }
     for(int i=1;i<5;i++)
     {
-        if(items[i]==0)
+        if(*items[i]!=0)
             headIcon[i].setColor(sf::Color(225,225,225,255));
         else
             headIcon[i].setColor(sf::Color(255,255,255,128));

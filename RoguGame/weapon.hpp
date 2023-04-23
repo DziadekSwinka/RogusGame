@@ -28,5 +28,16 @@ private:
     sf::Text time;
     int fix;
 };
+class hand_weapon
+{
+public:
+    void Update(sf::Vector2f Center);
+    hand_weapon(sf::RenderWindow &window1,std::string path);
+private:
+    sf::RenderWindow &window;
+    sf::Sprite sprite;
+    sf::Texture txt;
+    sf::Clock Loading;
+};
 
 #endif // WEAPON_HPP_INCLUDED

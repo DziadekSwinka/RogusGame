@@ -79,3 +79,26 @@ void weapon::Update(sf::Vector2f Center)
         window.draw(time);
     window.draw(sprite);
 }
+
+hand_weapon::hand_weapon(sf::RenderWindow &window1,std::string path):window(window1)
+{
+    txt.loadFromFile(path);
+    sprite.setTexture(txt);
+    //sprite.setOrigin(350,500);
+    sprite.setScale(0.3,0.3);
+}
+
+void hand_weapon::Update(sf::Vector2f Center)
+{
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+    {
+        sprite.setRotation(90);
+        if(Loading.getElapsedTime().asSeconds()>2.5f)
+        {
+
+        }
+    }else sprite.setRotation(45);
+    sprite.setPosition(Center.x,Center.y);
+    window.draw(sprite);
+}
+

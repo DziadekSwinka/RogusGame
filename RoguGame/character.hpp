@@ -25,12 +25,15 @@ private:
     weapon *gun;
     bool showText;
     int i;
+    int hand;
     friend class item;
+    hand_weapon *axe,*shovel,*sword;
 
 public:
     unsigned int HP;
     character(sf::RenderWindow &window1,std::string path):window(window1)
     {
+        hand=0;
         buffer.loadFromFile("Sounds\\steps.wav");
         sound.setBuffer(buffer);
         sound.setLoop(true);
@@ -39,6 +42,9 @@ public:
         red_rect=new sf::RectangleShape(sf::Vector2f(500,50));
         white_rect=new sf::RectangleShape(sf::Vector2f(500,50));
         gun=new weapon(window);
+        axe=new hand_weapon(window,"Textures\\axe.png");
+        shovel=new hand_weapon(window,"Textures\\shovel.png");
+        sword=new hand_weapon(window,"Textures\\sword.png");
         txt.loadFromFile(path);
         sprite.setTexture(txt);
         sprite.setScale(0.6,0.6);
@@ -97,8 +103,20 @@ public:
         Rsize=sf::Vector2f(HP*5,red_rect->getSize().y);
         red_rect->setSize(Rsize);
         window.draw(sprite);
-        if(equipment::Gun)
-        gun->Update(veCam);
+        if(equipment::Gun && hand==1)
+            gun->Update(veCam);
+        if(equipment::Axe && hand==2)
+        {
+            axe->Update(veCam);
+        }
+        if(equipment::Shovel && hand==3)
+        {
+            shovel->Update(veCam);
+        }
+        if(equipment::Sword && hand==4)
+        {
+            sword->Update(veCam);
+        }
         if(HP>0)
         {
             window.draw(*white_rect);
@@ -111,6 +129,5 @@ public:
             equip->Update(sprite.getPosition());
     }
 };
-
 
 #endif // CHARACTER_HPP_INCLUDED
