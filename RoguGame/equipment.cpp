@@ -35,12 +35,19 @@ void equipment::Update(sf::Vector2f pos)
     for(int i=0;i<5;i++)
     {
         if(i<2)
+        {
             headIcon[i].setPosition(pos.x-1050+i*600,pos.y-2510);
+            headText[i].setPosition(pos.x-1350+i*600,pos.y-2350);
+        }
         else
+        {
             headIcon[i].setPosition(pos.x-350+i*350,pos.y-2510);
+            headText[i].setPosition(pos.x-300+i*310,pos.y-2350);
+        }
         window.draw(headIcon[i]);
+        window.draw(headText[i+1]);
     }
-    for(int i=0;i<6;i++)
+    for(int i=1;i<5;i++)
     {
         if(items[i]==0)
             headIcon[i].setColor(sf::Color(225,225,225,255));

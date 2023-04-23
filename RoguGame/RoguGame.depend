@@ -545,7 +545,7 @@
 	"equipment.hpp"
 	"chest.hpp"
 
-1682278251 c:\users\pc\documents\github\rogusgame\rogugame\equipment.hpp
+1682282094 c:\users\pc\documents\github\rogusgame\rogugame\equipment.hpp
 	<SFML/Graphics.hpp>
 	<map>
 
@@ -593,7 +593,7 @@
 	"recipe.hpp"
 	"equipment.hpp"
 
-1682252438 source:c:\users\pc\documents\github\rogusgame\rogugame\crafting.cpp
+1682278082 source:c:\users\pc\documents\github\rogusgame\rogugame\crafting.cpp
 	"crafting.hpp"
 
 1682251358 c:\users\pc\documents\github\rogusgame\rogugame\recipe.hpp

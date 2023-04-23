@@ -81,7 +81,14 @@ public:
         }
         for(int i=0;i<6;i++)
         {
-            headIcon[i].setTexture(headIc[i]);
+            if(i<5)
+            {
+                headIcon[i].setTexture(headIc[i]);
+                headText[i].setFont(GochiHand_Regular);
+                headText[i].setFillColor(sf::Color::Red);
+                headText[i].setCharacterSize(100);
+                headText[i].setString("["+std::to_string(i)+"]");
+            }
             switch(i)
             {
             case 1:
@@ -115,8 +122,8 @@ public:
 private:
     sf::Font GochiHand_Regular;
     sf::RectangleShape backRect,headShape,headCenter;
-    sf::Text itemText[NumberOfItems],ammo;
-    sf::Texture itemTexture[NumberOfItems],headIc[6];
+    sf::Text itemText[NumberOfItems],ammo,headText[6];
+    sf::Texture itemTexture[NumberOfItems],headIc[5];
     sf::Sprite itemSprite[NumberOfItems],headIcon[6];
 };
 
