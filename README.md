@@ -5,7 +5,9 @@ RoguśGame - gra o rogusiu
 
 Oparta na faktach gra akcji przedstawia niezwykłą historię 
 Rogusia, który musi walczyć z otaczającym go 
-światem. Toczy walkę m.in. z chochołami i grzybami
+światem. Toczy walkę m.in. z chochołami i grzybami.
+W grze obecny jest realistyczny system wytwarzania nowych przedmiotów, tworzonych
+z pozyskanych wcześniej surowców.
 
 ## Sterowanie 
 
