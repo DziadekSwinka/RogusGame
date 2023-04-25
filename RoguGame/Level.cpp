@@ -4,7 +4,7 @@
 #include "Level.hpp"
 
 int Level_Class::level=1;
-int Level_Class::toNextLevel[NumberLevels]={1,1};
+int Level_Class::toNextLevel[NumberLevels]={15,10000};
 
 bool Level_Class::operator++()
 {

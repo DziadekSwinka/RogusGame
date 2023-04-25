@@ -11,8 +11,8 @@ unsigned int equipment::HP=100;
 unsigned int equipment::Bullets=12;
 int equipment::hand=0;
 bool equipment::Gun=false;
-bool equipment::Axe=true;
-bool equipment::Shovel=true;
+bool equipment::Axe=false;
+bool equipment::Shovel=false;
 bool equipment::Sword=false;
 bool equipment::isLoaded=false;
 

@@ -26,9 +26,8 @@ void Gate::Update(sf::Vector2f charPos)
         {
             Level_Class::level++;
             clock.restart();
+            show=false;
         }
-
-
     }
     window.draw(sprite);
 }
