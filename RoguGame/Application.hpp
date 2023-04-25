@@ -13,6 +13,8 @@
 #include "Enemy.hpp"
 #include "crafting.hpp"
 #include "Level.hpp"
+#include "Gate.hpp"
+#include "DeltaTime.h"
 
 void prep_txt_items();
 void Application();
@@ -20,16 +22,8 @@ void Application();
 struct
 {
     float Speed=0.001;
-    float deltaTime(float TimeAsSec)
-    {
-        const float TimeX=600;
-        float ret={1.f};
-        ret=TimeAsSec*TimeX;
-        return ret;
-    }
-    sf::Vector2i DIM;
     float zoom=5.f;
-
+    sf::Vector2i DIM;
 }Config;
 
 

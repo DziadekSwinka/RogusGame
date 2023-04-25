@@ -11,6 +11,10 @@
 #include "vectors.hpp"
 #include "sound.hpp"
 #include "throwedItem.hpp"
+#include "Level.hpp"
+#include "Gate.hpp"
+
+class Level_Class;
 
 class enemy
 {
@@ -24,8 +28,9 @@ protected:
     bool noTxt;
     double calcDir(sf::Vector2f characterPos);
     double alpha,a,b,c;
-    void collision(sf::Vector2f charPos,SoundEvent *Sound);
-    void injur(SoundEvent *Sound);
+    void collision(sf::Vector2f charPos,SoundEvent *Sound,Gate &gate);
+    void injur(SoundEvent *Sound,Gate &gate);
+    void injur(SoundEvent *Sound,int HowMuchHP,Gate &gate);
     void ini(std::string path,std::string path2);
     const unsigned int DMG_rate=5;
     const float AttackTime=4;
@@ -37,7 +42,7 @@ public:
         HP=100;
         c=0.8;
     }
-    virtual void Update(sf::Vector2f characterPos,SoundEvent *Sound);
+    virtual void Update(sf::Vector2f characterPos,SoundEvent *Sound,int handDMG,Gate &gate,double FTime);
 };
 
 class heavy_enemy
@@ -97,7 +102,7 @@ public:
         c=0.8;
         sprite.setScale(0.4,0.45);
     }
-    virtual void Update(sf::Vector2f characterPos,SoundEvent *Sound);
+    virtual void Update(sf::Vector2f characterPos,SoundEvent *Sound,int handDMG,Gate &gate,double FTime);
 };
 
 #endif // ENEMY_HPP_INCLUDED

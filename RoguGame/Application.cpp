@@ -21,6 +21,7 @@ void Application()
     sf::Sprite Title;
     sf::Texture TitleTxt;
     sf::RenderWindow window(sf::VideoMode(Config.DIM.x,Config.DIM.y),"RogusGame");
+    //window.setFramerateLimit(60);
     TitleTxt.loadFromFile("Textures//Title.jpg");
     Title.setTexture(TitleTxt);
     window.draw(Title);
@@ -32,6 +33,7 @@ void Application()
     sound.setBuffer(buffer);
     sound.setLoop(true);
     sound.setVolume(20);
+    Gate gate(window);
     PBar.Progress(15);
     std::vector<enemy*>chochol;
     PBar.Progress(25);
@@ -59,8 +61,12 @@ void Application()
     character Pawel(window,"Textures//pawel.png");
     PBar.Progress(100);
     sound.play();
+    double FTime;
     while(window.isOpen())
     {
+        deltaTime.PrevFrameTime=deltaTime.TimeAsSec.getElapsedTime();
+        deltaTime.TimeAsSec.restart();
+        FTime=deltaTime.FrameTime();
         sf::Event event;
         while(window.pollEvent(event))
         {
@@ -73,13 +79,13 @@ void Application()
                 BoostSpeed=0.3f;
             else BoostSpeed=0;
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && Camera.getCenter().x<34700)
-                Camera.move(1.2f+BoostSpeed,0);
+                Camera.move((1.2f+BoostSpeed)*FTime,0);
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && Camera.getCenter().x>2500)
-                Camera.move(-1.2f-BoostSpeed,0);
+                Camera.move((-1.2f-BoostSpeed)*FTime,0);
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && Camera.getCenter().y>2500)
-                Camera.move(0,-1.2f-BoostSpeed);
+                Camera.move(0,(-1.2f-BoostSpeed)*FTime);
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && Camera.getCenter().y<34700)
-                Camera.move(0,1.2f+BoostSpeed);
+                Camera.move(0,(1.2f+BoostSpeed)*FTime);
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab) && TabTime.getElapsedTime().asSeconds()>=0.2f)
         {
@@ -93,8 +99,10 @@ void Application()
         window.clear(sf::Color(30,100,30));
         Background.Update();
         vec.VectorsUpdate(Pawel,&window);
-        Level.Update(Camera.getCenter(),Sound);
-        Pawel.Update(Camera.getCenter());
+        if(Gate::show)
+            gate.Update(Camera.getCenter());
+        Level.Update(Camera.getCenter(),Sound,gate,FTime);
+        Pawel.Update(Camera.getCenter(),FTime);
         if(Crafting.showInterface)
             Crafting.Update(Camera.getCenter());
         window.display();

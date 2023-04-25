@@ -12,12 +12,12 @@ ThrowedItem::ThrowedItem(sf::RenderWindow &window1,sf::Vector2f startPos,double 
     a=c*(sin(alpha));
     b=c*(cos(alpha));
 }
-bool ThrowedItem::Update(sf::Vector2f charpos)
+bool ThrowedItem::Update(sf::Vector2f charpos,double FTime)
 {
     if(charpos.x+pos.x<=0 || charpos.y+pos.y<=0 || charpos.x+pos.x>=37200 || charpos.y+pos.y>=37200)
         return true;
-    sprite.rotate(rotationRate);
-    sprite.move(b,a);
+    sprite.rotate(rotationRate*FTime);
+    sprite.move(b*FTime,a*FTime);
     window.draw(sprite);
     return false;
 }

@@ -20,7 +20,7 @@ private:
                             "krzeslo.png"};
 public:
     ThrowedItem(sf::RenderWindow &window1,sf::Vector2f startPos,double alpha);
-    bool Update(sf::Vector2f charpos);
+    bool Update(sf::Vector2f charpos,double FTime);
 };
 
 #endif // THROWEDITEM_HPP_INCLUDED

@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <map>
 
+
 const short NumberOfItems=6;
 //this same var in file items.hpp
 
@@ -23,15 +24,16 @@ public:
     static bool Shovel;
     static bool Sword;
     static bool isLoaded;
+    static int hand;
     sf::RenderWindow &window;
     std::map<int,bool*>items;
 
     equipment(sf::RenderWindow &window1):window(window1)
     {
-        items[1]=&Gun;
-        items[2]=&Axe;
-        items[3]=&Shovel;
-        items[4]=&Sword;
+        items[2]=&Gun;
+        items[3]=&Axe;
+        items[4]=&Shovel;
+        items[5]=&Sword;
         backRect.setSize(sf::Vector2f(2516,600));
         backRect.setFillColor(sf::Color(80,80,80,220));
         backRect.setOutlineColor(sf::Color::Black);

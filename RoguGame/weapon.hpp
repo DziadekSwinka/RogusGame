@@ -14,7 +14,7 @@ class weapon
 {
 public:
     weapon(sf::RenderWindow &window1);
-    void Update(sf::Vector2f Center);
+    void Update(sf::Vector2f Center,double FTime);
     static std::vector<ammunition*>ammo;
     static void Destr(int i);
 private:
@@ -31,13 +31,15 @@ private:
 class hand_weapon
 {
 public:
-    void Update(sf::Vector2f Center);
-    hand_weapon(sf::RenderWindow &window1,std::string path);
+    static int hurt_by_hand;
+    void Update(sf::Vector2f Center,bool ScaleX);
+    hand_weapon(sf::RenderWindow &window1,std::string path,int dmgRate);
 private:
     sf::RenderWindow &window;
     sf::Sprite sprite;
     sf::Texture txt;
     sf::Clock Loading;
+    int dmg_Rate;
 };
 
 #endif // WEAPON_HPP_INCLUDED

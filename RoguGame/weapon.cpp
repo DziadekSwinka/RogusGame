@@ -2,7 +2,8 @@
 
 std::vector<ammunition*>weapon::ammo;
 
-weapon::weapon(sf::RenderWindow &window1):window(window1)
+weapon::weapon(sf::RenderWindow &window1)
+    :window(window1)
 {
     buffer.loadFromFile("Sounds\\piu_piu.wav");
     sound.setBuffer(buffer);
@@ -21,7 +22,7 @@ void weapon::Destr(int i)
     delete ammo[i];
     ammo.erase(ammo.begin()+i);
 }
-void weapon::Update(sf::Vector2f Center)
+void weapon::Update(sf::Vector2f Center,double FTime)
 {
     time.setString(std::to_string(/*round((*/loadingTime-Loading.getElapsedTime().asSeconds()/*)*10)/10*/));
     time.setPosition(Center.x-225,Center.y-900);
@@ -70,7 +71,7 @@ void weapon::Update(sf::Vector2f Center)
         }
     }
     for(int i=0;i<static_cast<int>(ammo.size());i++)
-        if(ammo[i]->Update(Center))
+        if(ammo[i]->Update(Center,FTime))
         {
             Destr(i);
         }
@@ -80,25 +81,43 @@ void weapon::Update(sf::Vector2f Center)
     window.draw(sprite);
 }
 
-hand_weapon::hand_weapon(sf::RenderWindow &window1,std::string path):window(window1)
+int hand_weapon::hurt_by_hand=0;
+
+hand_weapon::hand_weapon(sf::RenderWindow &window1,std::string path,int dmgRate)
+    :window(window1),dmg_Rate(dmgRate)
 {
     txt.loadFromFile(path);
     sprite.setTexture(txt);
-    //sprite.setOrigin(350,500);
+    sprite.setOrigin(350,880);
     sprite.setScale(0.3,0.3);
 }
 
-void hand_weapon::Update(sf::Vector2f Center)
+void hand_weapon::Update(sf::Vector2f Center,bool ScaleX)
 {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
     {
-        sprite.setRotation(90);
+        if(ScaleX)
+            sprite.setRotation(90);
+        else
+            sprite.setRotation(-90);
         if(Loading.getElapsedTime().asSeconds()>2.5f)
         {
-
-        }
-    }else sprite.setRotation(45);
-    sprite.setPosition(Center.x,Center.y);
+            hurt_by_hand=dmg_Rate;
+            Loading.restart();
+        }else
+            hurt_by_hand=0;
+    }else
+    {
+        if(ScaleX)
+            sprite.setRotation(45);
+        else
+            sprite.setRotation(-45);
+        hurt_by_hand=0;
+    }
+    if(ScaleX)
+        sprite.setPosition(Center.x+120,Center.y);
+    else
+        sprite.setPosition(Center.x-120,Center.y);
     window.draw(sprite);
 }
 

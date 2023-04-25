@@ -14,7 +14,7 @@ void enemy::ini(std::string path,std::string path2)
     pos.x=(rand()%34700)+2500;
     pos.y=(rand()%34700)+2500;
 }
-void enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound)
+void enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound,int handDMG,Gate &gate,double FTime)
 {
     if(HP>0)
     {
@@ -24,8 +24,13 @@ void enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound)
             /*alpha+=(std::rand()%2)-1;*/
             a=c*(sin(alpha));
             b=c*(cos(alpha));
-            pos.x+=b;
-            pos.y+=a;
+            pos.x+=(b*FTime);
+            pos.y+=(a*FTime);
+        }
+        if(abs(characterPos.x-pos.x)<500 && abs(characterPos.y-pos.y)<500)
+        {
+            if(handDMG>0)
+                injur(Sound,handDMG,gate);
         }
         if(abs(characterPos.x-pos.x)<500 && abs(characterPos.y-pos.y)<500 && time.getElapsedTime().asSeconds()>AttackTime)
         {
@@ -36,7 +41,7 @@ void enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound)
             time.restart();
         }
         if(abs(characterPos.x-pos.x)<6000 && abs(characterPos.y-pos.y)<6000 && !crafting::showInterface)
-            collision(characterPos,Sound);
+            collision(characterPos,Sound,gate);
         if(dmgTime.getElapsedTime().asSeconds()>0.3)
             noTxt=1;
         if(noTxt)
@@ -47,7 +52,7 @@ void enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound)
         window.draw(sprite);
     }
 
-}void mush_enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound)
+}void mush_enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound,int handDMG,Gate &gate,double FTime)
 {
     if(HP>0)
     {
@@ -61,8 +66,13 @@ void enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound)
             alpha+=(std::rand()%2)-1;*/
             a=c*(sin(alpha));
             b=c*(cos(alpha));
-            pos.x+=b;
-            pos.y+=a;
+            pos.x+=(b*FTime);
+            pos.y+=(a*FTime);
+        }
+        if(abs(characterPos.x-pos.x)<500 && abs(characterPos.y-pos.y)<500)
+        {
+            if(handDMG>0)
+                injur(Sound,handDMG,gate);
         }
         if(abs(characterPos.x-pos.x)<2000 && abs(characterPos.y-pos.y)<2000 && time.getElapsedTime().asSeconds()>AttackTime)
         {
@@ -70,7 +80,7 @@ void enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound)
             time.restart();
         }
         if(abs(characterPos.x-pos.x)<2000 && abs(characterPos.y-pos.y)<2000 && !crafting::showInterface)
-            collision(characterPos,Sound);
+            collision(characterPos,Sound,gate);
         if(dmgTime.getElapsedTime().asSeconds()>0.3)
             noTxt=1;
         if(noTxt)
@@ -80,7 +90,7 @@ void enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound)
         sprite.setPosition(pos.x,pos.y);
         window.draw(sprite);
         for(int i=throwed.size()-1;i>0;i--)
-            if(throwed[i]->Update(characterPos)==true)
+            if(throwed[i]->Update(characterPos,FTime)==true)
             {
                 delete throwed[i];
                 throwed.erase(throwed.begin()+i);
@@ -94,7 +104,7 @@ double enemy::calcDir(sf::Vector2f characterPos)
     dir/=M_PI/180.f;      //to degree
     return dir;
 }
-void enemy::collision(sf::Vector2f charPos,SoundEvent *Sound)
+void enemy::collision(sf::Vector2f charPos,SoundEvent *Sound,Gate &gate)
 {
     for(int i=0;i<static_cast<int>(weapon::ammo.size());i++)
     {
@@ -103,17 +113,28 @@ void enemy::collision(sf::Vector2f charPos,SoundEvent *Sound)
             if(AMpos.y+charPos.y>pos.y-txt.getSize().y && AMpos.y+charPos.y<pos.y+txt.getSize().y)
             {
                 weapon::Destr(i);
-                injur(Sound);
+                injur(Sound,gate);
             }
     }
 }
-void enemy::injur(SoundEvent *Sound)
+void enemy::injur(SoundEvent *Sound,Gate &gate)
 {
-    if(HP>=50)
-        HP-=50;
+    injur(Sound,50,gate);
+}
+void enemy::injur(SoundEvent *Sound,int HowMuchHP,Gate &gate)
+{
+    if(HP>=HowMuchHP)
+        HP-=HowMuchHP;
     if(HP==0)
     {
-       Sound->pushToQueue(std::rand()%6);
+        Sound->pushToQueue(std::rand()%6);
+        if(Level_Class::toNextLevel[Level_Class::level-1]>0)
+            Level_Class::toNextLevel[Level_Class::level-1]-=1;
+        if(Level_Class::toNextLevel[Level_Class::level-1]==0)
+        {
+            Gate::show=true;
+            gate.setPosition(pos);
+        }
     }
     noTxt=0;
     dmgTime.restart();

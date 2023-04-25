@@ -4,6 +4,7 @@
 #include "Level.hpp"
 
 int Level_Class::level=1;
+int Level_Class::toNextLevel[NumberLevels]={2,2};
 
 bool Level_Class::operator++()
 {
@@ -14,24 +15,24 @@ bool Level_Class::operator++()
     }else return false;
 }
 
-void Level_Class::Update(sf::Vector2f Camera,SoundEvent *Sound)
+void Level_Class::Update(sf::Vector2f Camera,SoundEvent *Sound,Gate &gate,double FTime)
 {
     levelConfig &thisLevel=levels[level];
     if(thisLevel.usingCharakters[0])
         for(int i=0;i<static_cast<int>(chochol.size());i++)
-            chochol[i]->Update(Camera,Sound);
+            chochol[i]->Update(Camera,Sound,hand_weapon::hurt_by_hand,gate,FTime);
     if(thisLevel.usingCharakters[1])
         for(int i=0;i<static_cast<int>(mushroom.size());i++)
-            mushroom[i]->Update(Camera,Sound);
+            mushroom[i]->Update(Camera,Sound,hand_weapon::hurt_by_hand,gate,FTime);
     if(thisLevel.usingCharakters[2])
         for(int i=0;i<static_cast<int>(chocholP.size());i++)
-            chocholP[i]->Update(Camera,Sound);
+            chocholP[i]->Update(Camera,Sound,hand_weapon::hurt_by_hand,gate,FTime);
     if(thisLevel.usingCharakters[3])
         for(int i=0;i<static_cast<int>(chocholA.size());i++)
-            chocholA[i]->Update(Camera,Sound);
+            chocholA[i]->Update(Camera,Sound,hand_weapon::hurt_by_hand,gate,FTime);
     if(thisLevel.usingCharakters[4])
         for(int i=0;i<static_cast<int>(chocholS.size());i++)
-            chocholS[i]->Update(Camera,Sound);
+            chocholS[i]->Update(Camera,Sound,hand_weapon::hurt_by_hand,gate,FTime);
 }
 
 Level_Class::Level_Class(std::vector<enemy*>&t1,std::vector<enemy*>&t2,std::vector<heavy_enemy*>&t3,std::vector<axe_enemy*>&t4,std::vector<shovel_enemy*>&t5,sf::RenderWindow &window)

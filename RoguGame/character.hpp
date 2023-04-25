@@ -24,16 +24,15 @@ private:
     equipment *equip;
     weapon *gun;
     bool showText;
+    static bool ScaleX;
     int i;
-    int hand;
     friend class item;
+    friend class hand_weapon;
     hand_weapon *axe,*shovel,*sword;
-
 public:
     unsigned int HP;
     character(sf::RenderWindow &window1,std::string path):window(window1)
     {
-        hand=0;
         buffer.loadFromFile("Sounds\\steps.wav");
         sound.setBuffer(buffer);
         sound.setLoop(true);
@@ -42,9 +41,9 @@ public:
         red_rect=new sf::RectangleShape(sf::Vector2f(500,50));
         white_rect=new sf::RectangleShape(sf::Vector2f(500,50));
         gun=new weapon(window);
-        axe=new hand_weapon(window,"Textures\\axe.png");
-        shovel=new hand_weapon(window,"Textures\\shovel.png");
-        sword=new hand_weapon(window,"Textures\\sword.png");
+        axe=new hand_weapon(window,"Textures\\axe.png",50);
+        shovel=new hand_weapon(window,"Textures\\shovelHand.png",20);
+        sword=new hand_weapon(window,"Textures\\sword.png",75);
         txt.loadFromFile(path);
         sprite.setTexture(txt);
         sprite.setScale(0.6,0.6);
@@ -61,73 +60,6 @@ public:
         white_rect->setOutlineThickness(5);
         i=0;
     };
-    void Update(sf::Vector2f veCam)
-    {
-        Center=veCam;
-        HP=equip->HP;
-        sprite.setPosition(Center);
-        pickUp.setPosition(Center.x-250,Center.y-800);
-        red_rect->setPosition(Center.x-250,Center.y-600);
-        white_rect->setPosition(Center.x-250,Center.y-600);
-        if(crafting::showInterface==false)
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            {
-                if(sound.getStatus()!=sf::Sound::Playing)
-                    sound.play();
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-                    if(-sprite.getScale().x<0)
-                        sprite.setScale(-sprite.getScale().x,sprite.getScale().y);
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-                    if(-sprite.getScale().x>0)
-                        sprite.setScale(-sprite.getScale().x,sprite.getScale().y);
-
-                if(clock.getElapsedTime().asSeconds()>=0.2)
-                {
-                    i++;
-                    if(i>2)
-                        i=0;
-                    clock.restart();
-                }
-                if(!crafting::showInterface && HP>0)
-                    sprite.setTextureRect(sf::IntRect(800*i,0,800,1400));
-            }else
-            {
-                sound.stop();
-                i=0;
-                sprite.setTextureRect(sf::IntRect(2400,0,800,1400));
-                if(HP<=0)
-                {
-                    sprite.setTextureRect(sf::IntRect(800*4,0,800,1400));
-                }
-            }
-        Rsize=sf::Vector2f(HP*5,red_rect->getSize().y);
-        red_rect->setSize(Rsize);
-        window.draw(sprite);
-        if(equipment::Gun && hand==1)
-            gun->Update(veCam);
-        if(equipment::Axe && hand==2)
-        {
-            axe->Update(veCam);
-        }
-        if(equipment::Shovel && hand==3)
-        {
-            shovel->Update(veCam);
-        }
-        if(equipment::Sword && hand==4)
-        {
-            sword->Update(veCam);
-        }
-        if(HP>0)
-        {
-            window.draw(*white_rect);
-            window.draw(*red_rect);
-            if(showText)
-                window.draw(pickUp);
-        }
-        showText=false;
-        if(!crafting::showInterface)
-            equip->Update(sprite.getPosition());
-    }
+    void Update(sf::Vector2f veCam,double FTime);
 };
-
 #endif // CHARACTER_HPP_INCLUDED

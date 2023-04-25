@@ -531,7 +531,7 @@
 	<ctime>
 	"character.hpp"
 
-1682283812 c:\users\pc\documents\github\rogusgame\rogugame\character.hpp
+1682435882 c:\users\pc\documents\github\rogusgame\rogugame\character.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	"equipment.hpp"
@@ -545,15 +545,15 @@
 	"equipment.hpp"
 	"chest.hpp"
 
-1682282094 c:\users\pc\documents\github\rogusgame\rogugame\equipment.hpp
+1682344877 c:\users\pc\documents\github\rogusgame\rogugame\equipment.hpp
 	<SFML/Graphics.hpp>
 	<map>
 
-1682283927 source:c:\users\pc\documents\github\rogusgame\rogugame\equipment.cpp
+1682346194 source:c:\users\pc\documents\github\rogusgame\rogugame\equipment.cpp
 	"equipment.hpp"
 	"Enemy.hpp"
 
-1682195752 c:\users\pc\documents\github\rogusgame\rogugame\application.hpp
+1682429485 c:\users\pc\documents\github\rogusgame\rogugame\application.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<vector>
@@ -565,16 +565,18 @@
 	"Enemy.hpp"
 	"crafting.hpp"
 	"Level.hpp"
+	"Gate.hpp"
+	"DeltaTime.h"
 
 1682234404 c:\users\pc\documents\github\rogusgame\rogugame\background.hpp
 	<SFML/Graphics.hpp>
 	<string>
 	"Level.hpp"
 
-1682256107 source:c:\users\pc\documents\github\rogusgame\rogugame\application.cpp
+1682435891 source:c:\users\pc\documents\github\rogusgame\rogugame\application.cpp
 	"Application.hpp"
 
-1682230988 c:\users\pc\documents\github\rogusgame\rogugame\enemy.hpp
+1682435809 c:\users\pc\documents\github\rogusgame\rogugame\enemy.hpp
 	<SFML/Graphics.hpp>
 	<cmath>
 	<vector>
@@ -584,8 +586,10 @@
 	"vectors.hpp"
 	"sound.hpp"
 	"throwedItem.hpp"
+	"Level.hpp"
+	"Gate.hpp"
 
-1682230988 source:c:\users\pc\documents\github\rogusgame\rogugame\enemy.cpp
+1682435650 source:c:\users\pc\documents\github\rogusgame\rogugame\enemy.cpp
 	"Enemy.hpp"
 
 1682252438 c:\users\pc\documents\github\rogusgame\rogugame\crafting.hpp
@@ -598,21 +602,21 @@
 
 1682251358 c:\users\pc\documents\github\rogusgame\rogugame\recipe.hpp
 
-1682283746 c:\users\pc\documents\github\rogusgame\rogugame\weapon.hpp
+1682435851 c:\users\pc\documents\github\rogusgame\rogugame\weapon.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<vector>
 	"ammunition.hpp"
 	"equipment.hpp"
 
-1682283703 source:c:\users\pc\documents\github\rogusgame\rogugame\weapon.cpp
+1682435851 source:c:\users\pc\documents\github\rogusgame\rogugame\weapon.cpp
 	"weapon.hpp"
 
-1681762701 c:\users\pc\documents\github\rogusgame\rogugame\ammunition.hpp
+1682435809 c:\users\pc\documents\github\rogusgame\rogugame\ammunition.hpp
 	<SFML/Graphics.hpp>
 	<cmath>
 
-1682151562 source:c:\users\pc\documents\github\rogusgame\rogugame\ammunition.cpp
+1682435809 source:c:\users\pc\documents\github\rogusgame\rogugame\ammunition.cpp
 	"ammunition.hpp"
 
 1681934926 source:c:\users\pc\documents\github\rogusgame\rogugame\chest.cpp
@@ -634,21 +638,36 @@
 1682173013 source:c:\users\pc\documents\github\rogusgame\rogugame\throweditem.cpp
 	"throwedItem.hpp"
 
-1682173013 c:\users\pc\documents\github\rogusgame\rogugame\throweditem.hpp
+1682436023 c:\users\pc\documents\github\rogusgame\rogugame\throweditem.hpp
 	<SFML/Graphics.hpp>
 	<cmath>
 
-1682234678 source:c:\users\pc\documents\github\rogusgame\rogugame\level.cpp
+1682435650 source:c:\users\pc\documents\github\rogusgame\rogugame\level.cpp
 	"Level.hpp"
 
 1682195266 c:\users\pc\documents\github\rogusgame\rogugame\progressbar.hpp
 	<SFML/Graphics.hpp>
 
-1682234766 c:\users\pc\documents\github\rogusgame\rogugame\level.hpp
+1682435650 c:\users\pc\documents\github\rogusgame\rogugame\level.hpp
 	<vector>
 	<string>
 	<map>
 	<SFML/Window.hpp>
 	"Enemy.hpp"
 	"sound.hpp"
+	"weapon.hpp"
+	"Gate.hpp"
+
+1682435882 source:c:\users\pc\documents\github\rogusgame\rogugame\character.cpp
+	"character.hpp"
+
+1682357919 c:\users\pc\documents\github\rogusgame\rogugame\gate.hpp
+	<SFML/Graphics.hpp>
+	<iostream>
+
+1682428950 source:c:\users\pc\documents\github\rogusgame\rogugame\gate.cpp
+	"Gate.hpp"
+
+1682435313 c:\users\pc\documents\github\rogusgame\rogugame\deltatime.h
+	<SFML/Graphics.hpp>
 

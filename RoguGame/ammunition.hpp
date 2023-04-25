@@ -16,7 +16,7 @@ private:
 public:
     sf::Vector2f pos;
     ammunition(sf::RenderWindow &window1,sf::Vector2f pos,float dir);
-    bool Update(sf::Vector2f Camera);
+    bool Update(sf::Vector2f Camera,double FTime);
 };
 
 #endif // AMMUNITION_HPP_INCLUDED
