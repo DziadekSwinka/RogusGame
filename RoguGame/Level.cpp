@@ -4,7 +4,7 @@
 #include "Level.hpp"
 
 int Level_Class::level=1;
-int Level_Class::toNextLevel[NumberLevels]={2,2};
+int Level_Class::toNextLevel[NumberLevels]={1,1};
 
 bool Level_Class::operator++()
 {
@@ -50,7 +50,7 @@ Level_Class::Level_Class(std::vector<enemy*>&t1,std::vector<enemy*>&t2,std::vect
     l2.usingCharakters[0]=0;
     l2.usingCharakters[1]=1;
     l2.usingCharakters[2]=0;
-    l2.usingCharakters[3]=0;
+    l2.usingCharakters[3]=1;
     l2.usingCharakters[4]=0;
 
     for(int i=0;i<20;i++)

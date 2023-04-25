@@ -30,7 +30,7 @@ void enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound,int handDMG,Gate 
         if(abs(characterPos.x-pos.x)<500 && abs(characterPos.y-pos.y)<500)
         {
             if(handDMG>0)
-                injur(Sound,handDMG,gate);
+                injur(Sound,handDMG,gate,characterPos);
         }
         if(abs(characterPos.x-pos.x)<500 && abs(characterPos.y-pos.y)<500 && time.getElapsedTime().asSeconds()>AttackTime)
         {
@@ -72,7 +72,7 @@ void enemy::Update(sf::Vector2f characterPos,SoundEvent *Sound,int handDMG,Gate 
         if(abs(characterPos.x-pos.x)<500 && abs(characterPos.y-pos.y)<500)
         {
             if(handDMG>0)
-                injur(Sound,handDMG,gate);
+                injur(Sound,handDMG,gate,characterPos);
         }
         if(abs(characterPos.x-pos.x)<2000 && abs(characterPos.y-pos.y)<2000 && time.getElapsedTime().asSeconds()>AttackTime)
         {
@@ -113,15 +113,15 @@ void enemy::collision(sf::Vector2f charPos,SoundEvent *Sound,Gate &gate)
             if(AMpos.y+charPos.y>pos.y-txt.getSize().y && AMpos.y+charPos.y<pos.y+txt.getSize().y)
             {
                 weapon::Destr(i);
-                injur(Sound,gate);
+                injur(Sound,gate,charPos);
             }
     }
 }
-void enemy::injur(SoundEvent *Sound,Gate &gate)
+void enemy::injur(SoundEvent *Sound,Gate &gate,sf::Vector2f charPos)
 {
-    injur(Sound,50,gate);
+    injur(Sound,50,gate,charPos);
 }
-void enemy::injur(SoundEvent *Sound,int HowMuchHP,Gate &gate)
+void enemy::injur(SoundEvent *Sound,int HowMuchHP,Gate &gate,sf::Vector2f charPos)
 {
     if(HP>=HowMuchHP)
         HP-=HowMuchHP;
@@ -133,7 +133,7 @@ void enemy::injur(SoundEvent *Sound,int HowMuchHP,Gate &gate)
         if(Level_Class::toNextLevel[Level_Class::level-1]==0)
         {
             Gate::show=true;
-            gate.setPosition(pos);
+            gate.setPosition(pos+charPos);
         }
     }
     noTxt=0;

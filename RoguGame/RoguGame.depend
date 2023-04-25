@@ -576,7 +576,7 @@
 1682435891 source:c:\users\pc\documents\github\rogusgame\rogugame\application.cpp
 	"Application.hpp"
 
-1682435809 c:\users\pc\documents\github\rogusgame\rogugame\enemy.hpp
+1682439334 c:\users\pc\documents\github\rogusgame\rogugame\enemy.hpp
 	<SFML/Graphics.hpp>
 	<cmath>
 	<vector>
@@ -589,7 +589,7 @@
 	"Level.hpp"
 	"Gate.hpp"
 
-1682435650 source:c:\users\pc\documents\github\rogusgame\rogugame\enemy.cpp
+1682438153 source:c:\users\pc\documents\github\rogusgame\rogugame\enemy.cpp
 	"Enemy.hpp"
 
 1682252438 c:\users\pc\documents\github\rogusgame\rogugame\crafting.hpp
@@ -619,7 +619,7 @@
 1682435809 source:c:\users\pc\documents\github\rogusgame\rogugame\ammunition.cpp
 	"ammunition.hpp"
 
-1681934926 source:c:\users\pc\documents\github\rogusgame\rogugame\chest.cpp
+1682439280 source:c:\users\pc\documents\github\rogusgame\rogugame\chest.cpp
 	"chest.hpp"
 
 1681935029 c:\users\pc\documents\github\rogusgame\rogugame\chest.hpp
@@ -635,14 +635,14 @@
 1682080932 source:c:\users\pc\documents\github\rogusgame\rogugame\sound.cpp
 	"sound.hpp"
 
-1682173013 source:c:\users\pc\documents\github\rogusgame\rogugame\throweditem.cpp
+1682436023 source:c:\users\pc\documents\github\rogusgame\rogugame\throweditem.cpp
 	"throwedItem.hpp"
 
 1682436023 c:\users\pc\documents\github\rogusgame\rogugame\throweditem.hpp
 	<SFML/Graphics.hpp>
 	<cmath>
 
-1682435650 source:c:\users\pc\documents\github\rogusgame\rogugame\level.cpp
+1682437048 source:c:\users\pc\documents\github\rogusgame\rogugame\level.cpp
 	"Level.hpp"
 
 1682195266 c:\users\pc\documents\github\rogusgame\rogugame\progressbar.hpp
@@ -661,11 +661,12 @@
 1682435882 source:c:\users\pc\documents\github\rogusgame\rogugame\character.cpp
 	"character.hpp"
 
-1682357919 c:\users\pc\documents\github\rogusgame\rogugame\gate.hpp
+1682439578 c:\users\pc\documents\github\rogusgame\rogugame\gate.hpp
 	<SFML/Graphics.hpp>
 	<iostream>
+	"Level.hpp"
 
-1682428950 source:c:\users\pc\documents\github\rogusgame\rogugame\gate.cpp
+1682438106 source:c:\users\pc\documents\github\rogusgame\rogugame\gate.cpp
 	"Gate.hpp"
 
 1682435313 c:\users\pc\documents\github\rogusgame\rogugame\deltatime.h

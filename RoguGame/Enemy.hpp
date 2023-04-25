@@ -15,6 +15,7 @@
 #include "Gate.hpp"
 
 class Level_Class;
+class Gate;
 
 class enemy
 {
@@ -29,8 +30,8 @@ protected:
     double calcDir(sf::Vector2f characterPos);
     double alpha,a,b,c;
     void collision(sf::Vector2f charPos,SoundEvent *Sound,Gate &gate);
-    void injur(SoundEvent *Sound,Gate &gate);
-    void injur(SoundEvent *Sound,int HowMuchHP,Gate &gate);
+    void injur(SoundEvent *Sound,Gate &gate,sf::Vector2f charPos);
+    void injur(SoundEvent *Sound,int HowMuchHP,Gate &gate,sf::Vector2f charPos);
     void ini(std::string path,std::string path2);
     const unsigned int DMG_rate=5;
     const float AttackTime=4;
