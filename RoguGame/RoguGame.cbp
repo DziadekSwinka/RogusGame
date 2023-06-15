@@ -18,9 +18,8 @@
 			<Target title="Release">
 				<Option output="bin/Release/RoguGame" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
-				<Option type="1" />
+				<Option type="0" />
 				<Option compiler="gcc" />
-				<Option use_console_runner="0" />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>
@@ -54,13 +53,17 @@
 		</Linker>
 		<Unit filename="Application.cpp" />
 		<Unit filename="Application.hpp" />
+		<Unit filename="DeltaTime.h" />
 		<Unit filename="Enemy.cpp" />
 		<Unit filename="Enemy.hpp" />
+		<Unit filename="Gate.cpp" />
+		<Unit filename="Gate.hpp" />
 		<Unit filename="Level.cpp" />
 		<Unit filename="Level.hpp" />
 		<Unit filename="ammunition.cpp" />
 		<Unit filename="ammunition.hpp" />
 		<Unit filename="background.hpp" />
+		<Unit filename="character.cpp" />
 		<Unit filename="character.hpp" />
 		<Unit filename="chest.cpp" />
 		<Unit filename="chest.hpp" />
